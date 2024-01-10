@@ -14,7 +14,7 @@ export const useExtaData = () => {
 export function ExtraDataContextProvider(props) {
   const [isLogin, setIsLogin] = useState(true);
   const imageUrl = `${VITE_BACKEND_URL}/public/images/`;
-  const documentUrl = `${REACT_APP_BACKEND_URL}/public/documentos/`;
+  const documentUrl = `${VITE_BACKEND_URL}/public/documentos/`;
   const expLettersNumbers = /^[a-zA-Z0-9]+$/;
   const expTextGeneral = /^[a-zA-Z0-9\s.,áéíóúÁÉÍÓÚ]+$/;
   const expJustLetters = /^[a-zA-Z\sáéíóúÁÉÍÓÚ]+$/;
