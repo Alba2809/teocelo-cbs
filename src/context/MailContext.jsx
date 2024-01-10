@@ -1,19 +1,19 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { sendEmailRequest } from "../api/email";
 
-const EmailContext = createContext();
+const MailContext = createContext();
 
-export const useEmail = () => {
-  const context = useContext(EmailContext);
+export const useMail = () => {
+  const context = useContext(MailContext);
 
   if (!context) {
-    throw new Error("useEmail must be used within a PostProvider");
+    throw new Error("useMail must be used within a PostProvider");
   }
 
   return context;
 };
 
-export function EmailProvider({ children }) {
+export function MailProvider({ children }) {
     const [errors, setErrors] = useState([]);
   
     const sendEmail = async (data) => {
@@ -40,15 +40,15 @@ export function EmailProvider({ children }) {
     }, [errors]);
   
     return (
-      <EmailContext.Provider
+      <MailContext.Provider
         value={{
           sendEmail,
           errors
         }}
       >
         {children}
-      </EmailContext.Provider>
+      </MailContext.Provider>
     );
   }
 
-export default EmailContext
+export default MailContext

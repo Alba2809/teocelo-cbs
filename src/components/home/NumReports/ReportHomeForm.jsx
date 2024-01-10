@@ -1,9 +1,9 @@
 import { useForm } from "react-hook-form";
-import { useEmail } from "../../../context/EmailCOntext";
 import { useEffect, useState } from "react";
 import { useRef } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Spinner } from "@material-tailwind/react";
+import { useMail } from "../../../context/MailContext";
 import DialogMessage from "../../DialogMessage";
 import AlertMessage from "../../AlertMessage";
 
@@ -28,7 +28,7 @@ function ReportHomeForm() {
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const { errors: sendErrors, sendEmail } = useEmail();
+  const { errors: sendErrors, sendEmail } = useMail();
   const [open, setOpen] = useState(false);
   const formRef = useRef();
   const [loading, setLoading] = useState(false);
