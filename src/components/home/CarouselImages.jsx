@@ -38,7 +38,7 @@ function CarouselImages() {
                   <img
                     src={imageUrl + post.image}
                     alt={"Imagen de la publicacion: " + post.title}
-                    className="h-[full] w-full object-cover"
+                    className="h-full w-full object-cover"
                   />
                   <div className="absolute inset-x-0 bottom-0 grid h-1/3 lg:h-36 w-full place-items-center bg-black/75">
                     <div className="w-3/4 text-center md:w-2/4">

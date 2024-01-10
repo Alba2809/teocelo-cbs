@@ -41,7 +41,7 @@ function ComponentNew({ newComponent, handleDetails }) {
                 <img
                   src={IconoVerMas}
                   alt="Icono para ver más publicaciones"
-                  className="h-full"
+                  className="max-h-[28rem] min-h-[28rem]"
                 />
               </Link>
             </Typography>
