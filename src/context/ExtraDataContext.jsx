@@ -1,5 +1,5 @@
 import { createContext, useState, useEffect, useContext } from "react";
-import { REACT_APP_BACKEND_URL } from "../config";
+import { VITE_BACKEND_URL } from "../config";
 
 export const ExtraDataContext = createContext();
 
@@ -13,7 +13,7 @@ export const useExtaData = () => {
 
 export function ExtraDataContextProvider(props) {
   const [isLogin, setIsLogin] = useState(true);
-  const imageUrl = `${REACT_APP_BACKEND_URL}/public/images/`;
+  const imageUrl = `${VITE_BACKEND_URL}/public/images/`;
   const documentUrl = `${REACT_APP_BACKEND_URL}/public/documentos/`;
   const expLettersNumbers = /^[a-zA-Z0-9]+$/;
   const expTextGeneral = /^[a-zA-Z0-9\s.,áéíóúÁÉÍÓÚ]+$/;
