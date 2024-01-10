@@ -12,13 +12,12 @@ function CarouselImages() {
     const conditional = ["Noticia", "Comunicado"];
     newsCom = posts.filter((post) => (post) => conditional.includes(post.type));
     if (newsCom.length > 5) {
+      
       const _posts = newsCom.slice(0, 5);
       _posts.push({ position: "More" });
       return _posts;
     } else {
-      const _posts = newsCom;
-      _posts.push({ position: "More" });
-      return _posts;
+      return newsCom;
     }
   };
   const newsSliced = sliceArray();
@@ -52,7 +51,7 @@ function CarouselImages() {
         No hay noticias o comunicados
       </div>
       ) : (
-        <Carousel autoplay={true} loop={true} className="z-0">
+        <Carousel autoplay={false} loop={true} className="z-0">
           {organizedNews.map((group, groupIndex) => (
             <div key={groupIndex} className={`flex h-full w-full px-4 mb-5`}>
               {group.map((new_, index) => (

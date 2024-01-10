@@ -30,22 +30,14 @@ function ComponentNew({ newComponent, handleDetails }) {
   return (
     <div className="w-full h-full bg-white rounded-2xl">
       {newComponent.position ? (
-        <Card className="max-h-[30rem] min-h-[30rem] flex justify-center items-center">
-          <CardBody>
-            <Typography
-              variant="h5"
-              color="blue-gray"
-              className="mb-2 font-montserrat text-[#494848] text-base lg:text-xl flex items-center"
-            >
-              <Link to="/posts">
+        <Card className={`max-h-[30rem] min-h-[30rem] flex justify-center items-center`}>
+          <Link to="/posts">
                 <img
                   src={IconoVerMas}
                   alt="Icono para ver más publicaciones"
-                  className="max-h-[28rem] min-h-[28rem]"
+                  className="max-h-[25rem]"
                 />
               </Link>
-            </Typography>
-          </CardBody>
         </Card>
       ) : (
         <Card className="max-h-[30rem] min-h-[30rem]">
