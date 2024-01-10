@@ -1,4 +1,5 @@
 import { createContext, useState, useEffect, useContext } from "react";
+import { REACT_APP_BACKEND_URL } from "../config";
 
 export const ExtraDataContext = createContext();
 
@@ -11,14 +12,14 @@ export const useExtaData = () => {
 };
 
 export function ExtraDataContextProvider(props) {
-  const [isLogin, setIsLogin, ] = useState(true);
-  const imageUrl = "http://localhost:4000/public/images/"
-  const documentUrl = "http://localhost:4000/public/documentos/"
-  const expLettersNumbers = /^[a-zA-Z0-9]+$/
-  const expTextGeneral = /^[a-zA-Z0-9\s.,áéíóúÁÉÍÓÚ]+$/
-  const expJustLetters = /^[a-zA-Z\sáéíóúÁÉÍÓÚ]+$/
-  const expNumLettExtended = /^[a-zA-Z0-9\s.,¿?-_!¡"áéíóúÁÉÍÓÚ]+$/
-  const expJustNumbers = /^[0-9]+$/
+  const [isLogin, setIsLogin] = useState(true);
+  const imageUrl = `${REACT_APP_BACKEND_URL}/public/images/`;
+  const documentUrl = `${REACT_APP_BACKEND_URL}/public/documentos/`;
+  const expLettersNumbers = /^[a-zA-Z0-9]+$/;
+  const expTextGeneral = /^[a-zA-Z0-9\s.,áéíóúÁÉÍÓÚ]+$/;
+  const expJustLetters = /^[a-zA-Z\sáéíóúÁÉÍÓÚ]+$/;
+  const expNumLettExtended = /^[a-zA-Z0-9\s.,¿?-_!¡"áéíóúÁÉÍÓÚ]+$/;
+  const expJustNumbers = /^[0-9]+$/;
 
   function changeIsLogin(value) {
     setIsLogin(value);
