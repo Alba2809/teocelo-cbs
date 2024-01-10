@@ -15,7 +15,7 @@ function Announcement() {
       </div>
       <div className={`grow flex justify-center ${isMobile ? "items-start" : "items-center"}`}>
         <div className={`flex items-center justify-center rounded-xl shadow-md shadow-[#d5d5d5] ${isMobile ? "h-[70%] px-5" : "h-full w-[50%]"}`}>
-          {posts.filter((post) => post.type === "Convocatoria").length > 0 ? (
+          {posts?.filter((post) => post.type === "Convocatoria").length > 0 ? (
             <Carousel
               navigation={({ setActiveIndex, activeIndex, length }) => (
                 <div className="absolute bottom-4 left-2/4 z-50 flex -translate-x-2/4 gap-2">

@@ -9,7 +9,7 @@ function CarouselImages() {
 
   return (
     <div className="bg-[#efeeee] mt-5 px-5">
-      {posts.length > 0 ? (
+      {posts?.length > 0 ? (
         <Carousel
           className={`rounded-xl z-0 !overflow-y-hidden ${
             isMobile ? "h-[30rem]" : "h-[45rem]"
@@ -17,7 +17,7 @@ function CarouselImages() {
           autoplay={true}
           loop={true}
         >
-          {posts.map((post, i) => (
+          {posts?.map((post, i) => (
             <div className="relative h-full w-full" key={i}>
               <img
                 src={imageUrl + post.image}
