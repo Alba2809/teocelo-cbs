@@ -1,0 +1,52 @@
+.user-icon-mark{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background-color: #6d1610;
+    border-radius: 50%;
+    border-width: 8px;
+    @media (min-width: 540px) {
+      border-width: 5px;
+    }
+    border-color: #ffffff;
+    width: 47%;
+    height: 47%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.user-icon {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  background-color: #ffffff00;
+  border-color: #6d1610;
+  border-radius: 100%;
+  border-width: 8px;
+}
+
+.user-icon::before,
+.user-icon::after {
+  content: "";
+  position: absolute;
+  background-color: #6d1610;
+}
+
+.user-icon::before {
+  width: 50%;
+  height: 50%;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 100%;
+}
+
+.user-icon::after {
+  width: 78%;
+  height: 60%;
+  bottom: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 100%;
+}

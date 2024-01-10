@@ -1,0 +1,30 @@
+.diagonal-border {
+    z-index: 10;
+    position: relative;
+    overflow: hidden;
+    border: 2px solid #6D1610;
+  }
+  
+  .diagonal-border::before {
+    z-index: 20;
+    top: -5px;
+    right: -5px;
+    transform: rotate(45deg);
+    transform-origin: 0 0;
+    content: '';
+    position: absolute;
+    width: 10px;
+    height: 5px;
+    background-color: #f9b03c;
+  }
+  
+  .diagonal-border::after {
+    bottom: -6px;
+    transform: rotate(45deg);
+    transform-origin: 0 0;
+    content: '';
+    position: absolute;
+    width: 10px;
+    height: 2px;
+    background-color: #f9b03c;
+  }
