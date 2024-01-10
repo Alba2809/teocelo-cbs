@@ -3,6 +3,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { usePosts } from "../../context/PostContext";
 import { useNavigate } from "react-router-dom";
 import { useExtaData } from "../../context/ExtraDataContext";
+import { useState } from "react";
 import InputSelect from "../../components/InputSelect";
 import UploadImage from "../../components/UploadImage";
 import AlertMessage from "../../components/AlertMessage";

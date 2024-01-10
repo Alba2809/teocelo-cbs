@@ -10,7 +10,6 @@ function CarouselImages() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    console.log(posts)
     if(loading) setLoading(false)
   }, [loading]);
 
