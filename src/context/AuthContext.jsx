@@ -58,7 +58,7 @@ export const AuthProvider = ({ children }) => {
         secure: true,
         sameSite: "None",
       });
-      
+
       setIsAuthenticated(true);
     } catch (error) {
       setErrors(error.response.data);
@@ -123,6 +123,7 @@ export const AuthProvider = ({ children }) => {
       if (!cookies.token) {
         setIsAuthenticated(false);
         setLoading(false);
+        Cookies.remove("token");
         return setUser(null);
       }
 
