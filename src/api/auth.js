@@ -1,11 +1,14 @@
 import axios from "./axios";
 import axiosDocument from "./axiosDocument";
 
-export const registerRequest = (user) => axios.post("/register", user);
+export const registerRequest = (user) =>
+  axios.post("/register", user, { withCredentials: true });
 
-export const loginRequest = (user) => axios.post("/login", user);
+export const loginRequest = (user) =>
+  axios.post("/login", user, { withCredentials: true });
 
-export const verifyTokenRequest = () => axios.get("/verify");
+export const verifyTokenRequest = () =>
+  axios.get("/verify", { withCredentials: true });
 
 export const updateRequest = (data) => axios.put("/update", data);
 
