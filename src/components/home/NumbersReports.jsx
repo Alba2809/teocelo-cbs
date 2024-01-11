@@ -10,7 +10,7 @@ function NumbersReports() {
     <div className="grid grid-cols-1 lg:grid-cols-2 px-4 mt-16">
       <div>
         <div className="font-extrabold text-center text-4xl pt-5 pb-20">
-          NUMEROS DE EMERGENCIA
+          NÚMEROS DE EMERGENCIA
         </div>
         <div className="grid grid-cols-2 grid-rows-2 gap-y-8 items-center justify-items-center">
           <motion.a

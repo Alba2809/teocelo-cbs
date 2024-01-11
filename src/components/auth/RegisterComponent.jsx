@@ -46,7 +46,7 @@ function RegisterPage() {
         <div className="flex h-[calc(100vh-190px)] items-center justify-center mx-5">
           <div className="w-full lg:w-[80%]">
             <h1 className="font-playfair text-red-800 text-6xl text-center mb-10">
-              ¡Registrate!
+              ¡Regístrate!
             </h1>
             <div className="mb-5 overflow-hidden">
               <AnimatePresence mode="sync">

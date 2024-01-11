@@ -26,7 +26,10 @@ export function OfficialProvider({ children }) {
       const res = await createOfficialRequest(data);
       return res.data;
     } catch (error) {
-      setErrors(error.response.data);
+      if (typeof error.response.data === "object" && error.response.data) {
+        const array = Object.values(error.response.data);
+        setErrors(array);
+      } else setErrors(error.response.data);
     }
   };
 

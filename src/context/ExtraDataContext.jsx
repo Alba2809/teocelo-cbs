@@ -15,10 +15,10 @@ export function ExtraDataContextProvider(props) {
   const [isLogin, setIsLogin] = useState(true);
   const imageUrl = `${VITE_BACKEND_URL}/public/images/`;
   const documentUrl = `${VITE_BACKEND_URL}/public/documentos/`;
-  const expLettersNumbers = /^[a-zA-Z0-9]+$/;
-  const expTextGeneral = /^[a-zA-Z0-9\s.,áéíóúÁÉÍÓÚ]+$/;
-  const expJustLetters = /^[a-zA-Z\sáéíóúÁÉÍÓÚ]+$/;
-  const expNumLettExtended = /^[a-zA-Z0-9\s.,¿?-_!¡"áéíóúÁÉÍÓÚ]+$/;
+  const expLettersNumbers = /^[a-zA-Z0-9ñÑ]+$/;
+  const expTextGeneral = /^[a-zA-Z0-9\s.,áéíóúÁÉÍÓÚñÑ]+$/;
+  const expJustLetters = /^[a-zA-Z\sáéíóúÁÉÍÓÚñÑ]+$/;
+  const expNumLettExtended = /^[a-zA-Z0-9\s.,¿?-_!¡"$áéíóúÁÉÍÓÚñÑ]+$/;
   const expJustNumbers = /^[0-9]+$/;
 
   function changeIsLogin(value) {

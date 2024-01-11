@@ -27,7 +27,7 @@ export function SoccerProvider({ children }) {
       return res.data;
     } catch (error) {
       setErrors(error.response.data);
-      console.log(error.response.data)
+      console.log(error.response.data);
     }
   };
 
@@ -36,12 +36,10 @@ export function SoccerProvider({ children }) {
       const res = await deleteTeamRequest(id);
       return res.data;
     } catch (error) {
-      console.log(error.response.data)
-        if(typeof error.response.data === "object" && error.response.data){
-          const array = Object.values(error.response.data)
-          setErrors(array);
-        }
-        else setErrors(error.response.data);
+      if (typeof error.response.data === "object" && error.response.data) {
+        const array = Object.values(error.response.data);
+        setErrors(array);
+      } else setErrors(error.response.data);
     }
   };
 

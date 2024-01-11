@@ -142,7 +142,7 @@ function LoginComponent() {
                   onClick={() => changeIsLogin(false)}
                   className="text-orange-300 font-bold"
                 >
-                  ¡Registrate!
+                  ¡Regístrate!
                 </button>
               </h3>
             </span>
