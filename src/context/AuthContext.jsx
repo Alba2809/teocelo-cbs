@@ -100,7 +100,7 @@ export const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     async function checkLogin() {
-      const cookies = Cookies.get();
+      const cookies = Cookies.get({ path: "/", domain: 'teocelo-cbs-api-production-dcfd.up.railway.app' });
 console.log(cookies)
       if (!cookies.token) {
         setIsAuthenticated(false);
