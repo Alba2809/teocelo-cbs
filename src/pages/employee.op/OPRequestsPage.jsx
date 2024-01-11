@@ -361,7 +361,7 @@ function OPRequestsPage() {
                         />
                       </th>
                       <th className="flex flex-col gap-3 border-[2px] rounded-md border-black p-2 min-h-[56px]">
-                        {request.documentAcepted !== "" &&
+                        {request.documentAccepted !== "" &&
                           request.status === "Aceptada" && (
                             <motion.div
                               className="w-full flex self-center justify-center"
