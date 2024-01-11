@@ -6,7 +6,7 @@ import {
   updateRequest,
   getUserRequest,
   getHistoryRequest,
-  getFileRequest
+  getFileRequest,
 } from "../api/auth";
 import Cookies from "js-cookie";
 
@@ -30,6 +30,15 @@ export const AuthProvider = ({ children }) => {
     try {
       const res = await registerRequest(user);
       setUser(res.data);
+
+      const expirationDate = new Date();
+      expirationDate.setDate(expirationDate.getDate() + 1); /* exp: 1day */
+
+      Cookies.set("token", res.data.token, {
+        expires: expirationDate,
+        secure: true,
+        sameSite: "None",
+      });
       setIsAuthenticated(true);
     } catch (error) {
       setErrors(error.response.data);
@@ -40,6 +49,16 @@ export const AuthProvider = ({ children }) => {
     try {
       const res = await loginRequest(user);
       setUser(res.data);
+
+      const expirationDate = new Date();
+      expirationDate.setDate(expirationDate.getDate() + 1); /* exp: 1day */
+
+      Cookies.set("token", res.data.token, {
+        expires: expirationDate,
+        secure: true,
+        sameSite: "None",
+      });
+      
       setIsAuthenticated(true);
     } catch (error) {
       setErrors(error.response.data);
@@ -61,8 +80,7 @@ export const AuthProvider = ({ children }) => {
     try {
       const res = await getUserRequest();
       return res.data;
-    } catch (error) {
-    }
+    } catch (error) {}
   };
 
   const getHistory = async () => {
@@ -101,7 +119,7 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     async function checkLogin() {
       const cookies = Cookies.get();
-      console.log(cookies)
+      console.log(cookies);
       if (!cookies.token) {
         setIsAuthenticated(false);
         setLoading(false);
