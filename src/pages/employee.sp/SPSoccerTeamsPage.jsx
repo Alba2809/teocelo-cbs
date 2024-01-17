@@ -1,9 +1,7 @@
 import { useEffect, useState } from "react";
 import { useSoccer } from "../../context/SoccerContext";
 import { AnimatePresence, motion } from "framer-motion";
-import {
-  Spinner,
-} from "@material-tailwind/react";
+import { Spinner } from "@material-tailwind/react";
 import AlertMessage from "../../components/AlertMessage";
 import HeaderTittle from "../../components/HeaderTittle";
 import DialogMessage from "../../components/DialogMessage";
@@ -28,7 +26,6 @@ function SPSoccerTeamsPage() {
   const [selectedRowI, setSelectedRowI] = useState(null);
   const [open, setOpen] = useState(false);
   const [openEnd, setOpenEnd] = useState(false);
-  const [progress, setProgress] = useState(0);
   const [titleDialog, setTitleDialog] = useState("");
 
   const handleOpen = () => setOpen((prev) => !prev);
@@ -115,9 +112,38 @@ function SPSoccerTeamsPage() {
 
   useEffect(() => {
     if (loadingUpdate) {
+      const teamNamesSet = new Set();
+      const isValidTeams = teams.every((team) => {
+        return (
+          team.teamname.trim() !== "" &&
+          team.teamname.length <= 100 &&
+          team.position >= 0 &&
+          team.plays >= 0 &&
+          team.wins >= 0 &&
+          team.draws >= 0 &&
+          team.losses >= 0 &&
+          team.goalsfavor >= 0 &&
+          team.goalsagainst >= 0 &&
+          team.goaldifference >= 0 &&
+          team.points >= 0 /* &&
+          !teamNamesSet.has(team.teamname) &&
+          teamNamesSet.add(team.teamname) */
+        );
+      });
+
+      const countErrors = 0;
+
+      if (!isValidTeams) {
+        setLoadingUpdate(false);
+        setTitleDialog(
+          "¡Hay campos inválidos! No puede haber números negativos, el nombre del equipo no debe estar en blanco y el nombre del equipo no debe tener más de 100 caracteres."
+        );
+        handleOpenEnd();
+        return;
+      }
+
       async function deleteTeam(data) {
         const res = await deleteSoccerTeam(data._id);
-        if (res.status === 200) setProgress((prev) => prev + 1);
       }
       teamsToDelete.map((team) => {
         deleteTeam(team);
@@ -125,16 +151,23 @@ function SPSoccerTeamsPage() {
 
       async function createOrUpdate(data) {
         const res = await createSoccerTeam(data);
-        if (res.status === 200) setProgress((prev) => prev + 1);
       }
       teams.map((team) => {
         createOrUpdate(team);
       });
 
-      setLoadingUpdate(false);
-      setLoading(true);
-      setTitleDialog("¡Información editada exitosamente!");
-      handleOpenEnd();
+      if (soccerErrors) {
+        setLoadingUpdate(false);
+        setTitleDialog(
+          "¡Hubo problemas en la edición de los equipos! Rebice que todos lo campos estén correctos y que no haya equipos repetidos."
+        );
+        handleOpenEnd();
+      } else {
+        setLoadingUpdate(false);
+        setLoading(true);
+        setTitleDialog("¡Información editada exitosamente!");
+        handleOpenEnd();
+      }
     }
   }, [loadingUpdate]);
 
@@ -162,11 +195,6 @@ function SPSoccerTeamsPage() {
             transition={{ type: "spring" }}
           >
             <Spinner className="w-20 h-10" />
-            <p className="text-center pt-1">
-              {progress > 0
-                ? `${(progress * 100) / (teams.length + teamsToDelete.length)}%`
-                : "0%"}
-            </p>
           </motion.div>
         </div>
       )}

@@ -165,17 +165,6 @@ function DWReportsPage() {
                 <th className="relative overflow-hidden">
                   <p className="p-3 break-words">Comentarios adicionales</p>
                   <div className="border-[4px] border-[#6D1610] absolute inset-y-0 inset-x-0"></div>
-                  <div className="absolute border-t-[5px] w-5 border-[#f9b03c] rotate-45 -right-2 top-0"></div>
-                  <div className="absolute border-t-[5px] w-8 border-[#f9b03c] rotate-45 -right-[0.45rem] top-1"></div>
-                  <div className="absolute border-t-[5px] w-12 border-[#f9b03c] rotate-45 -right-[0.60rem] top-[0.65rem]"></div>
-
-                  <div className="absolute border-t-[5px] w-5 border-[#f9b03c] rotate-45 -left-2 bottom-0"></div>
-                  <div className="absolute border-t-[5px] w-8 border-[#f9b03c] rotate-45 -left-[0.45rem] bottom-1"></div>
-                  <div className="absolute border-t-[5px] w-12 border-[#f9b03c] rotate-45 -left-[0.60rem] bottom-[0.65rem]"></div>
-                </th>
-                <th className="relative overflow-hidden">
-                  <p className="p-3 break-words">Estatus del reporte</p>
-                  <div className="border-[4px] border-[#6D1610] absolute inset-y-0 inset-x-0"></div>
                   <div className="absolute border-t-[4px] w-5 border-[#f9b03c] -rotate-45 -left-2 top-0"></div>
                   <div className="absolute border-t-[4px] w-8 border-[#f9b03c] -rotate-45 -left-[0.45rem] top-1"></div>
                   <div className="absolute border-t-[4px] w-12 border-[#f9b03c] -rotate-45 -left-[0.60rem] top-[0.65rem]"></div>
@@ -183,6 +172,17 @@ function DWReportsPage() {
                   <div className="absolute border-t-[4px] w-5 border-[#f9b03c] -rotate-45 -right-2 bottom-0"></div>
                   <div className="absolute border-t-[4px] w-8 border-[#f9b03c] -rotate-45 -right-[0.45rem] bottom-1"></div>
                   <div className="absolute border-t-[4px] w-12 border-[#f9b03c] -rotate-45 -right-[0.60rem] bottom-[0.65rem]"></div>
+                </th>
+                <th className="relative overflow-hidden">
+                  <p className="p-3 break-words">Estatus del reporte</p>
+                  <div className="border-[4px] border-[#6D1610] absolute inset-y-0 inset-x-0"></div>
+                  <div className="absolute border-t-[5px] w-5 border-[#f9b03c] rotate-45 -right-2 top-0"></div>
+                  <div className="absolute border-t-[5px] w-8 border-[#f9b03c] rotate-45 -right-[0.45rem] top-1"></div>
+                  <div className="absolute border-t-[5px] w-12 border-[#f9b03c] rotate-45 -right-[0.60rem] top-[0.65rem]"></div>
+
+                  <div className="absolute border-t-[5px] w-5 border-[#f9b03c] rotate-45 -left-2 bottom-0"></div>
+                  <div className="absolute border-t-[5px] w-8 border-[#f9b03c] rotate-45 -left-[0.45rem] bottom-1"></div>
+                  <div className="absolute border-t-[5px] w-12 border-[#f9b03c] rotate-45 -left-[0.60rem] bottom-[0.65rem]"></div>
                 </th>
               </tr>
             </thead>
@@ -212,7 +212,7 @@ function DWReportsPage() {
                         {report.user.firstname + " " + report.user.lastname}
                       </th>
                       <th className="border-[2px] rounded-md border-black p-2">
-                        {report.phonenumber ?? "0000000000"}
+                        {report.phonenumber}
                       </th>
                       <th>
                         <input

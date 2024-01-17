@@ -299,7 +299,7 @@ function DWRequestsPage() {
                           {request.user.firstname + " " + request.user.lastname}
                         </th>
                         <th className="border-[2px] rounded-md border-black p-2">
-                          {request.phonenumber ?? "2281824453"}
+                          {request.phonenumber}
                         </th>
                         <th>
                           <input

@@ -116,16 +116,11 @@ function EditPost() {
                             message:
                               'Solo se permiten letras, números, espacios y los signos (¿ ? _ - ! ¡ , . ")',
                           },
-                          maxLength: {
-                            value: 40,
-                            message: "No debe exceder los 40 caracteres",
-                          },
                           minLength: {
                             value: 6,
                             message: "Debe tener al menos 6 caracteres",
                           },
                         })}
-                        maxLength={40}
                         minLength={6}
                         className={`shadow border py-1 px-3 w-full ${
                           errors.title
@@ -164,7 +159,7 @@ function EditPost() {
                           required:
                             "Se requiere la información de la publicación",
                           pattern: {
-                            value: /^[a-zA-Z0-9\s.,;¿?_!¡\-%"#]+$/,
+                            value: /^[a-zA-Z0-9\s.,;¿?_!¡\-$"#áéíóúÁÉÍÓÚñÑ]+$/,
                             message:
                               'Solo se permiten letras, números, espacios y los signos (¿ ? _ - ! ¡ , . % " # $)',
                           },

@@ -307,7 +307,7 @@ function OPRequestsPage() {
                       transition={{ type: "spring", delay: i * 0.2 }}
                     >
                       <th className="border-[2px] rounded-md border-black p-2">
-                        {formatDate(request.folio)}
+                        {request.folio}
                       </th>
                       <th className="border-[2px] rounded-md border-black p-2">
                         {formatDate(request.createdAt)}
@@ -347,8 +347,7 @@ function OPRequestsPage() {
                               ? "bg-[#DB4545]"
                               : "bg-[#FFFFFF]"
                           } ${
-                            request.documentAccepted !== "" &&
-                            request.status === "Aceptada"
+                            request.documentAccepted !== ""
                               ? "h-[80px] lg:h-[104px]"
                               : "h-[56px]"
                           }`}
@@ -361,8 +360,7 @@ function OPRequestsPage() {
                         />
                       </th>
                       <th className="flex flex-col gap-3 border-[2px] rounded-md border-black p-2 min-h-[56px]">
-                        {request.documentAccepted !== "" &&
-                          request.status === "Aceptada" && (
+                        {request.documentAccepted !== "" && (
                             <motion.div
                               className="w-full flex self-center justify-center"
                               whileTap={{ scale: 0.95 }}
@@ -370,7 +368,7 @@ function OPRequestsPage() {
                               animate={{ scale: 1, opacity: 1 }}
                             >
                               <a
-                                href={documentUrl + request.documentAcepted}
+                                href={documentUrl + request.documentAccepted}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="bg-[#6d1610] text-white rounded-full text-sm lg:text-xl py-1 px-5 w-full"
@@ -387,22 +385,20 @@ function OPRequestsPage() {
                           ref={fileInputRef}
                           onChange={handleFileChange}
                         />
-                        {request.status === "Aceptada" && (
-                          <motion.div
-                            className="w-full flex self-center"
-                            whileTap={{ scale: 0.95 }}
-                            initial={{ scale: 0.5, opacity: 0 }}
-                            animate={{ scale: 1, opacity: 1 }}
+                        <motion.div
+                          className="w-full flex self-center"
+                          whileTap={{ scale: 0.95 }}
+                          initial={{ scale: 0.5, opacity: 0 }}
+                          animate={{ scale: 1, opacity: 1 }}
+                        >
+                          <button
+                            className="bg-[#6d1610] text-white rounded-full font-montserrat text-sm lg:text-xl py-1 px-5 w-full"
+                            type="button"
+                            onClick={() => handleButtonFile(request._id)}
                           >
-                            <button
-                              className="bg-[#6d1610] text-white rounded-full font-montserrat text-sm lg:text-xl py-1 px-5 w-full"
-                              type="button"
-                              onClick={() => handleButtonFile(request._id)}
-                            >
-                              Cargar
-                            </button>
-                          </motion.div>
-                        )}
+                            Cargar
+                          </button>
+                        </motion.div>
                       </th>
                     </motion.tr>
                   ))}

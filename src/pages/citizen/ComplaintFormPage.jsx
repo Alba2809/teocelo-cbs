@@ -482,7 +482,6 @@ function ComplaintFormPage() {
                     : "border-black placeholder-blue-gray-200"
                 }`}
                 {...register("innumber", {
-                  required: "Se requiere el núm. int.",
                   pattern: {
                     value: expLettersNumbers,
                     message: "Solo se permiten letras y números",

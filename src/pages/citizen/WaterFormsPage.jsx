@@ -7,6 +7,7 @@ import { useWater } from "../../context/WaterContext";
 import InputSelect from "../../components/InputSelect";
 import AlertMessage from "../../components/AlertMessage";
 import HeaderTittle from "../../components/HeaderTittle";
+import { useEffect } from "react";
 
 const options = ["Drenaje", "Agua Potable", "Ambas"];
 
@@ -38,8 +39,10 @@ function WaterFormsPage({ type }) {
   });
 
   const onOptionChange = (op) => {
-    setValue("typeConecton", op);
+    setValue("typeConection", op);
   };
+
+  useEffect(() => setValue("typeConection", options[0]), [])
 
   return (
     <div className="bg-white pt-6 pb-8 mt-5">
@@ -261,7 +264,7 @@ function WaterFormsPage({ type }) {
                   whileTap={{ scale: 0.95 }}
                 >
                   <a
-                    href="https://www.figma.com/file/tzRour6btc5Duf65ETFYVB/Proyecto?type=design&node-id=651-1557&mode=design&t=O9vWPrBWWhbqSVUT-0"
+                    href="https://docs.google.com/forms/d/e/1FAIpQLSeLajclYjYPQIWaHPi2pOcTq6xLbFc0wbv0M5PPCrWwJyQgdw/viewform?usp=sf_link"
                     target="_blank"
                     rel="noopener noreferrer"
                   >

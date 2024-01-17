@@ -58,6 +58,10 @@ function CSComplaintsPage() {
 
   const print = useReactToPrint({
     content: () => printComponentRefs.current,
+    onPrintError: () =>
+      alert(
+        "Hubo un error al tratar de descargar el archivo. Inténtelo de nuevo o inténtelo más tarde."
+      ),
   });
 
   useEffect(() => {

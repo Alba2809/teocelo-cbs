@@ -1,19 +1,19 @@
-.user-icon-mark{
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    background-color: #6d1610;
-    border-radius: 50%;
-    border-width: 8px;
-    @media (min-width: 540px) {
-      border-width: 5px;
-    }
-    border-color: #ffffff;
-    width: 47%;
-    height: 47%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.user-icon-mark {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background-color: #6d1610;
+  border-radius: 50%;
+  border-width: 8px;
+  @media (min-width: 540px) {
+    border-width: 5px;
+  }
+  border-color: #ffffff;
+  width: 47%;
+  height: 47%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .user-icon {
   position: relative;
@@ -46,6 +46,114 @@
   width: 78%;
   height: 60%;
   bottom: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 100%;
+}
+
+/*  */
+.user-icon-home-logout-mark {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background-color: #5f5f5f;
+  border-radius: 50%;
+  border-width: 8px;
+  @media (min-width: 540px) {
+    border-width: 3px;
+  }
+  border-color: #ffffff;
+  width: 47%;
+  height: 47%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.user-icon-home-logout {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  background-color: #ffffff00;
+  border-color: #5f5f5f;
+  border-radius: 100%;
+  border-width: 5px;
+}
+
+.user-icon-home-logout::before,
+.user-icon-home-logout::after {
+  content: "";
+  position: absolute;
+  background-color: #5f5f5f;
+}
+
+.user-icon-home-logout::before {
+  width: 50%;
+  height: 50%;
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 100%;
+}
+
+.user-icon-home-logout::after {
+  width: 78%;
+  height: 60%;
+  bottom: -25%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 100%;
+}
+
+/*  */
+.user-icon-home-login-mark {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background-color: #6d1610;
+  border-radius: 50%;
+  border-width: 8px;
+  @media (min-width: 540px) {
+    border-width: 3px;
+  }
+  border-color: #ffffff;
+  width: 47%;
+  height: 47%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.user-icon-home-login {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  background-color: #ffffff00;
+  border-color: #6d1610;
+  border-radius: 100%;
+  border-width: 5px;
+}
+
+.user-icon-home-login::before,
+.user-icon-home-login::after {
+  content: "";
+  position: absolute;
+  background-color: #6d1610;
+}
+
+.user-icon-home-login::before {
+  width: 50%;
+  height: 50%;
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 100%;
+}
+
+.user-icon-home-login::after {
+  width: 78%;
+  height: 60%;
+  bottom: -25%;
   left: 50%;
   transform: translateX(-50%);
   border-radius: 100%;

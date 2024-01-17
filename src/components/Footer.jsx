@@ -4,22 +4,45 @@ import LogoVerticalBlanco from "../assets/Logos/LogoVerticalBlanco.png";
 import EscudoVerticalP from "../assets/Logos/EscudoVerticalP.svg";
 import IconoFacebook from "../assets/Icons/IconoFacebook.png";
 import IconoInstagram from "../assets/Icons/IconoInstagram.png";
-import Footer1 from "../assets/Extras/Footer1.png"
-import Footer2 from "../assets/Extras/Footer2.png"
+import Footer1 from "../assets/Extras/Footer1.png";
+import Footer2 from "../assets/Extras/Footer2.png";
 
 function Footer() {
   return (
     <div className="flex flex-col pt-10 relative">
-      <img src={Footer1} alt="Elemento del footer - 1" className="absolute top-10 left-0 lg:w-80 w-52" />
-      <img src={Footer2} alt="Elemento del footer - 2" className="absolute bottom-5 right-0 lg:w-80 w-52" />
+      <img
+        src={Footer1}
+        alt="Elemento del footer - 1"
+        className="absolute top-10 left-0 w-[15%]"
+      />
+      <img
+        src={Footer2}
+        alt="Elemento del footer - 2"
+        className="absolute bottom-5 right-0 w-[15%]"
+      />
       <div className="bg-[#6D1610] grid grid-cols-3 place-items-center p-10 max-h-[400px]">
         <div className="w-full">
           <p className="text-white text-3xl text-center font-extrabold font-serif">
             UBICACIÓN:
           </p>
-          <iframe style={{width: "100%", height: "220px", margin: "0", frameborder: "0"}} scrolling="no"  id="gmap_canvas" src="https://maps.google.com/maps?width=721&amp;height=220&amp;hl=en&amp;q=Covarrubias%20s/n,%20Centro,%2091615%20Teocelo,%20Ver.%20Xalapa+(Ayuntamiento%20de%20Teocelo)&amp;t=&amp;z=16&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe> <a href='http://maps-generator.com/es'></a> <script type='text/javascript' src='https://embedmaps.com/google-maps-authorization/script.js?id=ca0c11d06024c73ce7c58bbd91af13cc8a5b9f32'></script>
+          <iframe
+            style={{
+              width: "100%",
+              height: "220px",
+              margin: "0",
+              frameborder: "0",
+            }}
+            scrolling="no"
+            id="gmap_canvas"
+            src="https://maps.google.com/maps?width=721&amp;height=220&amp;hl=en&amp;q=Covarrubias%20s/n,%20Centro,%2091615%20Teocelo,%20Ver.%20Xalapa+(Ayuntamiento%20de%20Teocelo)&amp;t=&amp;z=16&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
+          ></iframe>{" "}
+          <a href="http://maps-generator.com/es"></a>{" "}
+          <script
+            type="text/javascript"
+            src="https://embedmaps.com/google-maps-authorization/script.js?id=ca0c11d06024c73ce7c58bbd91af13cc8a5b9f32"
+          ></script>
         </div>
-        <div className="grid grid-rows-2 shrink-0 gap-8 px-2 lg:px-0 lg:ml-20 font-montserrat">
+        <div className="grid grid-rows-2 shrink-0 gap-8 px-2 lg:px-0 ml-[10%] font-montserrat">
           <div className="flex items-center justify-start gap-5">
             <RiMapPin2Fill size="2em" style={{ color: "#ffffff" }} />
             <span className="text-white font-bold lg:text-xl">
@@ -54,16 +77,22 @@ function Footer() {
             H. Ayuntamiento de Teocelo
           </div>
           <div className="flex justify-center gap-10">
-            <img
-              src={IconoFacebook}
-              alt="Icono de Facebook"
+            <a
               className="w-[30%] lg:w-[15%]"
-            />
-            <img
-              src={IconoInstagram}
-              alt="Icono de Instagram"
+              href="https://www.facebook.com/GobiernoTeocelo?mibextid=2JQ9oc"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img src={IconoFacebook} alt="Icono de Facebook" />
+            </a>
+            <a
               className="w-[30%] lg:w-[15%]"
-            />
+              href="https://www.instagram.com/gobteocelo?igsh=anowN3R4ajJic3o4"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img src={IconoInstagram} alt="Icono de Instagram" />
+            </a>
           </div>
         </div>
       </div>

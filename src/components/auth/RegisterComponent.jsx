@@ -9,6 +9,13 @@ import { AnimatePresence, motion } from "framer-motion";
 import LogoHorizontal from "../../assets/Logos/LogoHorizontal.png";
 import EscudoVertical from "../../assets/Logos/EscudoVertical.png";
 import AlertMessage from "../AlertMessage";
+import {
+  Popover,
+  PopoverContent,
+  PopoverHandler,
+  Tooltip,
+  Typography,
+} from "@material-tailwind/react";
 
 function RegisterPage() {
   const {
@@ -28,7 +35,7 @@ function RegisterPage() {
 
   return (
     <div>
-      <div className="grid grid-cols-1 gap-0 h-screen">
+      <div className="flex flex-col justify-between h-screen">
         <div className="col-span-1">
           <Link to="/">
             <img
@@ -43,7 +50,7 @@ function RegisterPage() {
             />
           </Link>
         </div>
-        <div className="flex h-[calc(100vh-190px)] items-center justify-center mx-5">
+        <div className="flex h-[calc(100vh-190px)] items-center justify-center mx-[15%]">
           <div className="w-full lg:w-[80%]">
             <h1 className="font-playfair text-red-800 text-6xl text-center mb-10">
               ¡Regístrate!
@@ -154,29 +161,52 @@ function RegisterPage() {
                 )}
               </div>
               <div className="relative">
-                <input
-                  type={showPassword ? "text" : "password"}
-                  placeholder="Contraseña"
-                  maxLength={25}
-                  minLength={6}
-                  {...register("password", {
-                    required: "Se requiere la contraseña",
-                    pattern: {
-                      value: /^[a-zA-Z0-9_\-\s@\$!%*?&]+$/,
-                      message:
-                        "Solo se permiten letras, números, espacios y los caracteres (-, _, @, $, !, %, *, ? y &)",
-                    },
-                    maxLength: {
-                      value: 25,
-                      message: "No debe exceder los 25 caracteres",
-                    },
-                    minLength: {
-                      value: 6,
-                      message: "Debe tener al menos 6 caracteres",
-                    },
-                  })}
-                  className="w-full text-black pl-4 pr-10 py-2 rounded-md border-2 border-black block"
-                />
+                {/* <Tooltip
+                  className="border border-blue-gray-50 bg-white px-4 py-3 shadow-xl shadow-black/10"
+                  content={
+                    <div className="w-80">
+                      <Typography color="blue-gray" className="font-medium">
+                        Aviso
+                      </Typography>
+                      <Typography
+                        variant="small"
+                        color="blue-gray"
+                        className="font-normal opacity-80"
+                      >
+                        Para mayor seguridad, incluya una letra mayúscula, una letra minúscula y un número.
+                      </Typography>
+                    </div>
+                    }
+                >
+                </Tooltip> */}
+                  <input
+                    type={showPassword ? "text" : "password"}
+                    placeholder="Contraseña"
+                    maxLength={25}
+                    minLength={6}
+                    {...register("password", {
+                      required: "Se requiere la contraseña",
+                      pattern: {
+                        value: /^[a-zA-Z0-9_\-\s@\$!%*?&]+$/,
+                        message:
+                          "Solo se permiten letras, números, espacios y los caracteres (-, _, @, $, !, %, *, ? y &)",
+                      },
+                      validate: {
+                        uppercase: value => /[A-ZÁÉÍÓÚÜÑ]/.test(value) || "Debe contener al menos una letra mayúscula.",
+                        lowercase: value => /[a-záéíóúüñ]/.test(value) || "Debe contener al menos una letra minúscula.",
+                        digit: value => /\d/.test(value) || "Debe contener al menos un número.",
+                      },
+                      maxLength: {
+                        value: 25,
+                        message: "No debe exceder los 25 caracteres",
+                      },
+                      minLength: {
+                        value: 6,
+                        message: "Debe tener al menos 6 caracteres",
+                      },
+                    })}
+                    className="w-full text-black pl-4 pr-10 py-2 rounded-md border-2 border-black block"
+                  />
                 <div className="absolute inset-y-0 right-0 pr-3 flex items-center text-sm leading-5">
                   {showPassword ? (
                     <GoEyeClosed

@@ -28,7 +28,7 @@ function LoginComponent() {
 
   return (
     <div>
-      <div className="grid grid-cols-1 gap-0 h-screen">
+      <div className="flex flex-col justify-between h-screen">
         <div className="col-span-1">
           <Link to="/" className="text-orange-300 font-bold">
             <img

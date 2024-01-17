@@ -3,7 +3,7 @@ import Encabezado2 from "../assets/Extras/Encabezado2.png";
 
 function HeaderTittle({ title }) {
   return (
-    <div className="w-full h-14 text-white font-extrabold text-2xl lg:text-4xl flex items-center">
+    <div className="w-full h-14 text-white font-extrabold text-xl lg:text-2xl flex items-center">
       <img
         src={Encabezado2}
         alt="Elemento de encabezado - 2"

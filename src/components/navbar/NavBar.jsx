@@ -8,20 +8,20 @@ import {
   ThemeProvider,
 } from "@material-tailwind/react";
 import { useForm } from "react-hook-form";
-import { useState } from "react";
-import { FaSearch } from "react-icons/fa";
+import { useEffect, useState } from "react";
+import { FaCheck, FaSearch } from "react-icons/fa";
 import { FaCircleXmark, FaXmark } from "react-icons/fa6";
 import { BiMenu } from "react-icons/bi";
 import { Outlet } from "react-router-dom";
 import { useExtaData } from "../../context/ExtraDataContext";
+import { useAuth } from "../../context/AuthContext";
+import { AnimatePresence, motion } from "framer-motion";
 import LogoHorizontal from "../../assets/Logos/LogoHorizontal.png";
 import EscudoVertical from "../../assets/Logos/EscudoVertical.png";
 import IconoX from "../../assets/Icons/IconoX.png";
 import BtnMeGustaria from "../../assets/Extras/BtnMeGustaria.png";
 import NavBarOptions from "./NavBarOptions";
 import NavBarOptionsMobileVersion from "./NavBarOptionsMobileVersion";
-import { useAuth } from "../../context/AuthContext";
-import { motion } from "framer-motion";
 import SCOptions from "./OptionsRoles/SCOptions";
 import CitizenOptions from "./OptionsRoles/CitizenOptions";
 import DefaultOptions from "./OptionsRoles/DefaultOptions";
@@ -32,15 +32,23 @@ import ESOptions from "./OptionsRoles/ESOptions";
 import CSOptions from "./OptionsRoles/CSOptions";
 import OPOptions from "./OptionsRoles/OPOptions";
 import SPOptions from "./OptionsRoles/SPOptions";
+import DialogMessage from "../DialogMessage";
+import "../../styles/PulseAnimation.css";
+import "../../styles/IconUserLogin.css";
 
 function NavBar() {
-  const { register } = useForm();
   const { isMobile } = useExtaData();
   const { isAuthenticated, logout, getUser } = useAuth();
-  const [user, setUser] = useState([])
+  const [user, setUser] = useState([]);
 
   const [openDialog, setOpenDialog] = useState(false);
   const handleOpenDialog = () => setOpenDialog(!openDialog);
+
+  const [openDialogSystem, setOpenDialogSystem] = useState(false);
+  const handleOpenDialogSystem = () => setOpenDialogSystem(!openDialogSystem);
+  const handleCloseDialogSystem = () => {
+    handleOpenDialogSystem();
+  };
 
   const [openDrawer, setOpenDrawer] = useState(false);
 
@@ -95,13 +103,23 @@ function NavBar() {
   };
 
   const getUserData = async () => {
-    if(!isAuthenticated) return handleOpenDialog()
+    if (!isAuthenticated) return handleOpenDialog();
     try {
-      const res = await getUser()
-      setUser(res)
-      handleOpenDialog()
-    } catch (error) {  }
-  }
+      const res = await getUser();
+      setUser(res);
+      handleOpenDialog();
+    } catch (error) {}
+  };
+
+  useEffect(() => {
+    async function getData() {
+      try {
+        const res = await getUser();
+        setUser(res);
+      } catch (error) {}
+    }
+    getData();
+  }, []);
 
   return (
     <div>
@@ -128,29 +146,49 @@ function NavBar() {
           </div>
           {!isMobile && (
             <div className="flex items-center justify-end">
-              <form method="get" className="mr-5">
-                <div className="relative ml-14">
-                  <input
-                    type="text"
-                    placeholder="Buscar"
-                    {...register("search", { required: true })}
-                    className="w-full text-black pr-10 pl-10 py-2 rounded-3xl border border-black bg-[#efefef] block"
-                  />
-                  <div className="absolute inset-y-0 left-0 pl-3 flex items-center text-sm leading-5">
-                    <FaSearch size="1.5em" style={{ color: "#848488" }} />
-                  </div>
-                  <div className="absolute inset-y-0 right-0 pr-3 flex items-center text-sm leading-5">
-                    <FaCircleXmark size="1.5em" style={{ color: "#848488" }} />
-                  </div>
-                </div>
-              </form>
-
               <motion.img
                 whileTap={{ scale: 0.95 }}
                 src={BtnMeGustaria}
                 onClick={getUserData}
-                className="w-1/2 md:w-[38%] lg:w-1/5 mr-5 mt-3 cursor-pointer"
+                className="w-[170px] mr-5 mt-3 cursor-pointer"
               />
+              <div className="flex items-center mr-[5%]">
+                <div className="relative w-[40px] h-[40px] lg:w-[50px] lg:h-[50px]">
+                  <div
+                    className={
+                      isAuthenticated
+                        ? "user-icon-home-login"
+                        : "user-icon-home-logout"
+                    }
+                  ></div>
+                  <div
+                    className={
+                      isAuthenticated
+                        ? "user-icon-home-login-mark p-1"
+                        : "user-icon-home-logout-mark p-1"
+                    }
+                  >
+                    {isAuthenticated ? (
+                      <FaCheck color="white" />
+                    ) : (
+                      <FaXmark color="white" />
+                    )}
+                  </div>
+                </div>
+                <AnimatePresence mode="popLayout">
+                  {isAuthenticated && (
+                    <motion.p
+                      layout
+                      initial={{ x: 100, opacity: 0 }}
+                      animate={{ x: 0, opacity: 1 }}
+                      exit={{ x: 100, opacity: 0 }}
+                      className="ml-5 font-extrabold text-black text-xl text-center"
+                    >
+                      {user.firstname}
+                    </motion.p>
+                  )}
+                </AnimatePresence>
+              </div>
             </div>
           )}
         </div>
@@ -167,29 +205,46 @@ function NavBar() {
               </div>
               <Drawer open={openDrawer} onClose={closeDrawer} className="p-4">
                 <div className="mb-6 flex items-center justify-between">
-                  <span>Menu</span>
+                  <div className="flex items-center">
+                    <div className="relative w-[40px] h-[40px] lg:w-[50px] lg:h-[50px]">
+                      <div
+                        className={
+                          isAuthenticated
+                            ? "user-icon-home-login"
+                            : "user-icon-home-logout"
+                        }
+                      ></div>
+                      <div
+                        className={
+                          isAuthenticated
+                            ? "user-icon-home-login-mark p-[2px]"
+                            : "user-icon-home-logout-mark p-[2px]"
+                        }
+                      >
+                        {isAuthenticated ? (
+                          <FaCheck color="white" />
+                        ) : (
+                          <FaXmark color="white" />
+                        )}
+                      </div>
+                    </div>
+                    <AnimatePresence mode="popLayout">
+                      {isAuthenticated && (
+                        <motion.p
+                          layout
+                          initial={{ x: 100, opacity: 0 }}
+                          animate={{ x: 0, opacity: 1 }}
+                          exit={{ x: 100, opacity: 0 }}
+                          className="ml-5 font-extrabold text-black text-xl text-center"
+                        >
+                          {user.firstname}
+                        </motion.p>
+                      )}
+                    </AnimatePresence>
+                  </div>
                   <FaXmark className="cursor-pointer" onClick={closeDrawer} />
                 </div>
                 <div className="grid grid-cols-1 items-center justify-center">
-                  <form method="get">
-                    <div className="relative">
-                      <input
-                        type="text"
-                        placeholder="Buscar"
-                        {...register("search", { required: true })}
-                        className="w-full text-black pr-10 pl-10 py-2 rounded-3xl border border-black bg-[#efefef] block"
-                      />
-                      <div className="absolute inset-y-0 left-0 pl-3 flex items-center text-sm leading-5">
-                        <FaSearch size="1.5em" style={{ color: "#848488" }} />
-                      </div>
-                      <div className="absolute inset-y-0 right-0 pr-3 flex items-center text-sm leading-5">
-                        <FaCircleXmark
-                          size="1.5em"
-                          style={{ color: "#848488" }}
-                        />
-                      </div>
-                    </div>
-                  </form>
                   <motion.img
                     whileTap={{ scale: 0.95 }}
                     src={BtnMeGustaria}
@@ -391,7 +446,8 @@ function NavBar() {
             <DialogBody>
               {isAuthenticated ? (
                 <>
-                  {user.role?.name === "employee.sc" /* Comunicación social */ && (
+                  {user.role?.name ===
+                    "employee.sc" /* Comunicación social */ && (
                     <>
                       <SCOptions
                         handleLogout={handleLogout}
@@ -399,7 +455,8 @@ function NavBar() {
                       />
                     </>
                   )}
-                  {user.role?.name === "employee.sl" /* Alumbrado público */ && (
+                  {user.role?.name ===
+                    "employee.sl" /* Alumbrado público */ && (
                     <>
                       <SLOptions
                         handleLogout={handleLogout}
@@ -431,7 +488,8 @@ function NavBar() {
                       />
                     </>
                   )}
-                  {user.role?.name === "employee.op" /* Oficialía de partes */ && (
+                  {user.role?.name ===
+                    "employee.op" /* Oficialía de partes */ && (
                     <>
                       <OPOptions
                         handleLogout={handleLogout}
@@ -439,7 +497,8 @@ function NavBar() {
                       />
                     </>
                   )}
-                  {user.role?.name === "employee.sp" /* Fomento deportivo */ && (
+                  {user.role?.name ===
+                    "employee.sp" /* Fomento deportivo */ && (
                     <>
                       <SPOptions
                         handleLogout={handleLogout}
@@ -482,8 +541,38 @@ function NavBar() {
         >
           <Outlet />
           <Footer />
+          <button
+            className="fixed bottom-5 right-5 w-14 h-14 bg-[#b43930] rounded-full text-white z-[9999] pulse text-4xl font-extrabold font-montserrat"
+            onClick={handleOpenDialogSystem}
+          >
+            !
+          </button>
         </motion.div>
       </div>
+      <DialogMessage
+        buttonCancel={false}
+        handleOpen={handleOpenDialogSystem}
+        title="¡Aviso importante!"
+        message={
+          <div>
+            Este sistema web es una versión de prueba y no cuenta con estatus
+            oficial. Su implementación ha sido autorizada por el H. Ayuntamiento
+            de Teocelo exclusivamente para propósitos de prueba y evaluación.
+            <br />
+            <br />
+            Por favor, tenga en cuenta que cualquier solicitud, reporte o acción
+            realizada a través de este sistema no tendrá validez oficial. Se le
+            invita a dirigirse a los canales habituales de comunicación con el
+            H. Ayuntamiento para cualquier asunto oficial.
+            <br />
+            <br />
+            Agradecemos su comprensión y colaboración durante esta fase de
+            prueba.
+          </div>
+        }
+        handleAction={handleCloseDialogSystem}
+        open={openDialogSystem}
+      />
     </div>
   );
 }

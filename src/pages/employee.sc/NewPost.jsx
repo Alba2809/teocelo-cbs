@@ -92,16 +92,11 @@ function NewPost() {
                       message:
                         'Solo se permiten letras, números, espacios, acentos y los signos (¿ ? _ - ! ¡ , . ")',
                     },
-                    maxLength: {
-                      value: 40,
-                      message: "No debe exceder los 40 caracteres",
-                    },
                     minLength: {
                       value: 6,
                       message: "Debe tener al menos 6 caracteres",
                     },
                   })}
-                  maxLength={40}
                   minLength={6}
                   className={`shadow border py-1 px-3 w-full ${
                     errors.title

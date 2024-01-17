@@ -1,10 +1,10 @@
 import { FaCheck } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { useExtaData } from "../../../context/ExtraDataContext";
 import IconoAgregarP from "../../../assets/Icons/IconoAgregarP.png";
 import IconoBorrarP from "../../../assets/Icons/IconoBorrarP.png";
 import IconoEditarP from "../../../assets/Icons/IconoEditarP.png";
 import "../../../styles/IconUserLogin.css";
-import { useExtaData } from "../../../context/ExtraDataContext";
 
 function SCOptions({ handleLogout, userName }) {
   const { isMobile } = useExtaData();

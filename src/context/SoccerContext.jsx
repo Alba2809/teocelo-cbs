@@ -24,17 +24,19 @@ export function SoccerProvider({ children }) {
   const createSoccerTeam = async (data) => {
     try {
       const res = await createUpdateTeamsRequest(data);
-      return res.data;
+      return res;
     } catch (error) {
-      setErrors(error.response.data);
-      console.log(error.response.data);
+      if (typeof error.response.data === "object" && error.response.data) {
+        const array = Object.values(error.response.data);
+        setErrors(array);
+      } else setErrors(error.response.data);
     }
   };
 
   const deleteSoccerTeam = async (id) => {
     try {
       const res = await deleteTeamRequest(id);
-      return res.data;
+      return res;
     } catch (error) {
       if (typeof error.response.data === "object" && error.response.data) {
         const array = Object.values(error.response.data);

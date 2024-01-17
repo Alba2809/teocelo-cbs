@@ -111,7 +111,13 @@ function NatureFormsPage({ type }) {
               whileTap={{ scale: 0.95 }}
             >
               <a
-                href="https://www.figma.com/file/tzRour6btc5Duf65ETFYVB/Proyecto?type=design&node-id=651-1557&mode=design&t=O9vWPrBWWhbqSVUT-0"
+                href={
+                  type === "cattle"
+                    ? "https://docs.google.com/forms/d/e/1FAIpQLSdjVNHPgA8Uf31uPisO0MrS_HmTp1cIJe6zqE1J1caJAPQo_w/viewform?usp=sf_link"
+                    : type === "agricultural"
+                    ? "https://docs.google.com/forms/d/e/1FAIpQLSf8DY3mUpWJvcXJd5hKP0AhjcOg8J95HAfG_8lgkvv69pdU7w/viewform?usp=sf_link"
+                    : "https://docs.google.com/forms/d/e/1FAIpQLSdM_2ZQKklbrKX6njwq-Wn7R5TwhxLBViz-PgGW8i4E73Q-Fg/viewform?usp=sf_link"
+                }
                 target="_blank"
                 rel="noopener noreferrer"
               >
