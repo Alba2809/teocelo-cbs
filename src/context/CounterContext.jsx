@@ -35,16 +35,14 @@ export function CounterProvider({ children }) {
       const visitedCookie = Cookies.get("visited");
   
       if (!visitedCookie) {
-        console.log("no existe")
         const count = await createCookie();
         setCounterVisits(count)
       } else {
-        console.log("existe")
         const res = await getVisitsRequest()
         setCounterVisits(res.data.count)
       }
     } catch (error) {
-      console.log(error)
+      
     }
   };
 
