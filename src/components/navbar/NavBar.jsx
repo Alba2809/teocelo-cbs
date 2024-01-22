@@ -550,7 +550,11 @@ function NavBar() {
             !
           </button>
           <div className="fixed bottom-32 right-5 w-14 h-14 bg-[#b43930] rounded-full text-white z-[9998] pulse font-extrabold font-montserrat flex items-center justify-center">
-            <Tooltip className="z-[9999]" content={`Visitas: ${counterVisits}`} placement="left">
+            <Tooltip
+              className="z-[9999]"
+              content={`Visitas: ${counterVisits}`}
+              placement="left"
+            >
               <button>
                 <FaRegEye size="1.8em" />
               </button>
