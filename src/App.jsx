@@ -1,4 +1,7 @@
 import { Route, Routes, useLocation } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { AnimatePresence } from "framer-motion";
+import NewPost from "./pages/employee.sc/NewPost";
 import HomePage from "./pages/HomePage";
 import NavBar from "./components/navbar/NavBar";
 import HistoryPage from "./pages/HistoryPage";
@@ -18,8 +21,6 @@ import PAETeoceloPage from "./pages/PAETeoceloPage";
 import FISMEvaluationPage from "./pages/FISMEvaluationPage";
 import FORTAMUNEvaluationPage from "./pages/FORTAMUNEvaluationPage";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
-import { AnimatePresence } from "framer-motion";
-import NewPost from "./pages/employee.sc/NewPost";
 import ProtectedRolRoute from "./components/auth/ProtectedRolRoute";
 import PostsPage from "./pages/PostsPage";
 import PostPage from "./pages/PostPage";
@@ -44,9 +45,14 @@ import OPRequestsPage from "./pages/employee.op/OPRequestsPage";
 import OfficialFormPage from "./pages/citizen/OfficialFormPage";
 import SPSoccerTeamsPage from "./pages/employee.sp/SPSoccerTeamsPage";
 import SoccerTeamsPage from "./pages/SoccerTeamsPage";
+import { useCounter } from "./context/CounterContext";
 
 function App() {
+  const { getUpdateVisits } = useCounter()
   const location = useLocation();
+
+  getUpdateVisits()
+
   return (
     <AnimatePresence mode="wait" initial={false}>
       <Routes location={location} key={location.pathname}>

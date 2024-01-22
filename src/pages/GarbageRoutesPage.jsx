@@ -91,7 +91,7 @@ function GarbageRoutesPage() {
                 ? monday
                 : day === "Martes"
                 ? tuesday
-                : day === "Miercoles"
+                : day === "Miércoles"
                 ? wednesday
                 : day === "Jueves"
                 ? thursday

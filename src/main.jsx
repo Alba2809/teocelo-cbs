@@ -14,6 +14,7 @@ import { ComplaintProvider } from "./context/ComplaintContext.jsx";
 import { OfficialProvider } from "./context/OfficialContext.jsx";
 import { SoccerProvider } from "./context/SoccerContext.jsx";
 import { MailProvider } from "./context/MailContext.jsx";
+import { CounterProvider } from "./context/CounterContext.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
@@ -28,9 +29,11 @@ ReactDOM.createRoot(document.getElementById("root")).render(
                     <OfficialProvider>
                       <MailProvider>
                         <SoccerProvider>
-                          <BrowserRouter>
-                            <App />
-                          </BrowserRouter>
+                          <CounterProvider>
+                            <BrowserRouter>
+                              <App />
+                            </BrowserRouter>
+                          </CounterProvider>
                         </SoccerProvider>
                       </MailProvider>
                     </OfficialProvider>

@@ -6,15 +6,16 @@ import {
   Drawer,
   List,
   ThemeProvider,
+  Tooltip,
 } from "@material-tailwind/react";
-import { useForm } from "react-hook-form";
 import { useEffect, useState } from "react";
-import { FaCheck, FaSearch } from "react-icons/fa";
-import { FaCircleXmark, FaXmark } from "react-icons/fa6";
+import { FaCheck, FaRegEye } from "react-icons/fa";
+import { FaXmark } from "react-icons/fa6";
 import { BiMenu } from "react-icons/bi";
 import { Outlet } from "react-router-dom";
 import { useExtaData } from "../../context/ExtraDataContext";
 import { useAuth } from "../../context/AuthContext";
+import { useCounter } from "../../context/CounterContext";
 import { AnimatePresence, motion } from "framer-motion";
 import LogoHorizontal from "../../assets/Logos/LogoHorizontal.png";
 import EscudoVertical from "../../assets/Logos/EscudoVertical.png";
@@ -39,6 +40,7 @@ import "../../styles/IconUserLogin.css";
 function NavBar() {
   const { isMobile } = useExtaData();
   const { isAuthenticated, logout, getUser } = useAuth();
+  const { counterVisits } = useCounter();
   const [user, setUser] = useState([]);
 
   const [openDialog, setOpenDialog] = useState(false);
@@ -547,6 +549,13 @@ function NavBar() {
           >
             !
           </button>
+          <div className="fixed bottom-32 right-5 w-14 h-14 bg-[#b43930] rounded-full text-white z-[9998] pulse font-extrabold font-montserrat flex items-center justify-center">
+            <Tooltip className="z-[9999]" content={`Visitas: ${counterVisits}`} placement="left">
+              <button>
+                <FaRegEye size="1.8em" />
+              </button>
+            </Tooltip>
+          </div>
         </motion.div>
       </div>
       <DialogMessage
