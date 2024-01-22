@@ -22,7 +22,7 @@ export function CounterProvider({ children }) {
     return new Promise((resolve, reject) => {
       try {
         const res = getUpdateVisitsRequest();
-        Cookies.set("visited", "true", { expires: 1, path: '/' });
+        Cookies.set("visited", "true", { expires: 1, path: '/', secure: true, sameSite: "None" });
         resolve(res.data?.count);
       } catch (error) {
         reject(error);
