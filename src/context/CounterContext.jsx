@@ -22,7 +22,14 @@ export function CounterProvider({ children }) {
     return new Promise((resolve, reject) => {
       try {
         const res = getUpdateVisitsRequest();
-        Cookies.set("visited", "true", { expires: 1, path: '/', secure: true, sameSite: "None" });
+        const expirationDate = new Date();
+        expirationDate.setDate(expirationDate.getDate() + 1); /* exp: 1day */
+        Cookies.set("visited", "true", {
+          expires: expirationDate,
+          path: "/",
+          secure: true,
+          sameSite: "None",
+        });
         resolve(res.data?.count);
       } catch (error) {
         reject(error);
@@ -33,17 +40,15 @@ export function CounterProvider({ children }) {
   const getUpdateVisits = async () => {
     try {
       const visitedCookie = Cookies.get("visited");
-  
+
       if (!visitedCookie) {
         const count = await createCookie();
-        setCounterVisits(count)
+        setCounterVisits(count);
       } else {
-        const res = await getVisitsRequest()
-        setCounterVisits(res.data.count)
+        const res = await getVisitsRequest();
+        setCounterVisits(res.data.count);
       }
-    } catch (error) {
-      
-    }
+    } catch (error) {}
   };
 
   useEffect(() => {
