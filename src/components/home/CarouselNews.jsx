@@ -10,7 +10,7 @@ function CarouselImages() {
 
   const sliceArray = () => {
     const conditional = ["Noticia", "Comunicado"];
-    newsCom = posts.filter((post) => (post) => conditional.includes(post.type));
+    newsCom = posts.filter((post) => conditional.includes(post.type));
     if (newsCom.length > 5) {
       const _posts = newsCom.slice(0, 5);
       _posts.push({ position: "More" });
@@ -19,6 +19,7 @@ function CarouselImages() {
       return newsCom;
     }
   };
+
   const newsSliced = sliceArray();
 
   const organizedNews = newsSliced.reduce((acc, curr, index) => {
