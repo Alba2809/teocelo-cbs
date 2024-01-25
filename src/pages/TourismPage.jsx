@@ -1,7 +1,8 @@
 import { useExtaData } from "../context/ExtraDataContext";
 import { motion } from "framer-motion";
 import TourismComponent from "../components/home/Others/TourismComponent";
-import Cascada from "../assets/Photos/Cascada-Tezozontla.jpg";
+import Iglesia from "../assets/Photos/Tourism/1-Iglesia.jpg";
+import Texolo from "../assets/Photos/Tourism/1-Texolo.jpg";
 import HeaderTittle from "../components/HeaderTittle";
 
 function TourismPage() {
@@ -21,7 +22,7 @@ function TourismPage() {
         >
           <TourismComponent
             data={{
-              images: [Cascada, Cascada, Cascada],
+              images: [Texolo],
               imageAlt: "Imagen - Cascada",
               imageSide: "left",
               title: "Cascada de Texolo",
@@ -39,7 +40,7 @@ function TourismPage() {
         >
           <TourismComponent
             data={{
-              images: [Cascada, Cascada, Cascada],
+              images: [Iglesia],
               imageAlt: "Imagen - Cascada",
               imageSide: "right",
               title: "Parroquia de la Asunción de María",
