@@ -87,11 +87,6 @@ function NewPost() {
                   placeholder="Ingresa un título llamativo..."
                   {...register("title", {
                     required: "Se requiere un título",
-                    pattern: {
-                      value: expNumLettExtended,
-                      message:
-                        'Solo se permiten letras, números, espacios, acentos y los signos (¿ ? _ - ! ¡ , . ")',
-                    },
                     minLength: {
                       value: 6,
                       message: "Debe tener al menos 6 caracteres",
@@ -130,11 +125,6 @@ function NewPost() {
                 <textarea
                   {...register("body", {
                     required: "Se requiere la información de la publicación",
-                    pattern: {
-                      value: /^[a-zA-Z0-9\s.,;¿?_!¡\-$"#áéíóúÁÉÍÓÚñÑ]+$/,
-                      message:
-                        'Solo se permiten letras, acentos, números, espacios y los signos (¿ ? _ - ! ¡ , . $ " #)',
-                    },
                   })}
                   className={`w-full text-black px-4 py-2 rounded-md border resize-none shadow ${
                     errors.body

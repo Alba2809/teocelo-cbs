@@ -83,7 +83,7 @@ function GarbageRoutesPage() {
     <div className="bg-white pt-6 pb-8 mt-5">
       <HeaderTittle title={"Rutas de recolección de basura"} />
       <div className="mx-[10%] my-16 flex flex-col gap-14">
-        {["Lunes", "Martes", "Miercoles", "Jueves", "Viernes"].map((day, i) => (
+        {["Lunes", "Martes", "Miércoles", "Jueves", "Viernes"].map((day, i) => (
           <div className="flex gap-5 justify-center items-center" key={i}>
             <ArrowRoutes day={day} />
             <div className="bg-[#EFEFEF] drop-shadow-md shadow shadow-gray-400 flex flex-wrap gap-5 p-5 text-base lg:text-xl font-bold font-sans">
