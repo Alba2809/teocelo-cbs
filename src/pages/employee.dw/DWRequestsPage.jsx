@@ -170,7 +170,18 @@ function DWRequestsPage() {
     <div>
       <div className="bg-white pt-6 pb-8 mt-5">
         <HeaderTittle title={"Solicitudes"} />
-        <div className="flex flex-row-reverse mt-5 mr-5">
+        <div className="flex flex-row justify-between mt-5 mr-5 ml-10">
+          <motion.div
+            className="w-[260px] flex bg-white border-[#6d1610] border-2 p-1 rounded-full text-center"
+            whileTap={{ scale: 0.95 }}
+          >
+            <a
+              className="bg-[#6d1610] text-white rounded-full font-montserrat text-xl lg:text-3xl py-1 px-5 w-full"
+              href="https://docs.google.com/forms/d/e/1FAIpQLSeLajclYjYPQIWaHPi2pOcTq6xLbFc0wbv0M5PPCrWwJyQgdw/viewform?usp=sf_link"
+            >
+              Solicitudes
+            </a>
+          </motion.div>
           <div className="relative ml-14 w-[23rem]">
             <input
               type="text"
@@ -180,7 +191,7 @@ function DWRequestsPage() {
               name="searchValue"
               className="w-full text-black pr-10 pl-2 py-2 rounded-lg border-[3px] border-[#6D1610] bg-white block placeholder-black font-montserrat"
             />
-            <div className="absolute inset-y-0 right-0 px-[0.40rem] m-[0.5rem] flex items-center text-sm leading-5 bg-[#6D1610] rounded-md cursor-pointer">
+            <div className="absolute top-0 right-0 px-[0.40rem] py-1 m-[0.5rem] flex items-center text-sm bg-[#6D1610] rounded-md cursor-pointer">
               <LuSearch
                 size="1.5em"
                 style={{ color: "#ffffff" }}

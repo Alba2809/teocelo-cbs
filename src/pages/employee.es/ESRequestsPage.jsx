@@ -81,8 +81,8 @@ function ESRequestsPage({ type }) {
     const regex = /^[a-zA-Z0-9\s.,]+$/;
 
     if (!regex.test(newValue) && newValue !== "") {
-      event.target.value = getValues("commentsEmployee")
-      return
+      event.target.value = getValues("commentsEmployee");
+      return;
     }
 
     setValue("commentsEmployee", newValue);
@@ -176,7 +176,24 @@ function ESRequestsPage({ type }) {
               : "Guías de traslado de bambú"
           }
         />
-        <div className="flex flex-row-reverse mt-5 mr-5">
+        <div className="flex flex-row justify-between mt-5 mr-5 ml-10">
+          <motion.div
+            className="w-[260px] flex bg-white border-[#6d1610] border-2 p-1 rounded-full text-center"
+            whileTap={{ scale: 0.95 }}
+          >
+            <a
+              className="bg-[#6d1610] text-white rounded-full font-montserrat text-xl lg:text-3xl py-1 px-5 w-full"
+              href={
+                type === "cattle"
+                  ? "https://docs.google.com/forms/d/e/1FAIpQLSdjVNHPgA8Uf31uPisO0MrS_HmTp1cIJe6zqE1J1caJAPQo_w/viewform?usp=sf_link"
+                  : type === "agricultural"
+                  ? "https://docs.google.com/forms/d/e/1FAIpQLSf8DY3mUpWJvcXJd5hKP0AhjcOg8J95HAfG_8lgkvv69pdU7w/viewform?usp=sf_link"
+                  : "https://docs.google.com/forms/d/e/1FAIpQLSdM_2ZQKklbrKX6njwq-Wn7R5TwhxLBViz-PgGW8i4E73Q-Fg/viewform?usp=sf_link"
+              }
+            >
+              Solicitudes
+            </a>
+          </motion.div>
           <div className="relative ml-14 w-[23rem]">
             <input
               type="text"
@@ -186,7 +203,7 @@ function ESRequestsPage({ type }) {
               name="searchValue"
               className="w-full text-black pr-10 pl-2 py-2 rounded-lg border-[3px] border-[#6D1610] bg-white block placeholder-black font-montserrat"
             />
-            <div className="absolute inset-y-0 right-0 px-[0.40rem] m-[0.5rem] flex items-center text-sm leading-5 bg-[#6D1610] rounded-md cursor-pointer">
+            <div className="absolute top-0 right-0 px-[0.40rem] py-1 m-[0.5rem] flex items-center text-sm bg-[#6D1610] rounded-md cursor-pointer">
               <LuSearch
                 size="1.5em"
                 style={{ color: "#ffffff" }}
