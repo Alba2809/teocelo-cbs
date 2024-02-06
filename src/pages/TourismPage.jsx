@@ -1,18 +1,25 @@
 import { useExtaData } from "../context/ExtraDataContext";
 import { motion } from "framer-motion";
-import {
-  ImagesIglesia,
-  ImagesJuntas,
-  ImagesMatlacobatl,
-  ImagesMonja,
-  ImagesMuseo,
-  ImagesRevolucion,
-  ImagesTexolo,
-  ImagesTezozontla,
-  ImagesTocuapan,
-} from "../constants/ImagesTourism";
 import TourismComponent from "../components/home/Others/TourismComponent";
 import HeaderTittle from "../components/HeaderTittle";
+import Matlacobatl1 from "../assets/Photos/Tourism/Matlacobatl/1-Matlacobatl.jpg"
+import Matlacobatl2 from "../assets/Photos/Tourism/Matlacobatl/2-Matlacobatl.jpg"
+import Texolo1 from "../assets/Photos/Tourism/Texolo/1-Texolo.jpg"
+import Texolo2 from "../assets/Photos/Tourism/Texolo/2-Texolo.jpg"
+import Monja1 from "../assets/Photos/Tourism/LaMonja/1-Monja.jpg"
+import Monja2 from "../assets/Photos/Tourism/LaMonja/2-Monja.jpg"
+import Tezozontla1 from "../assets/Photos/Tourism/Tezozontla/1-Tezozontla.jpg"
+import Tezozontla2 from "../assets/Photos/Tourism/Tezozontla/2-Tezozontla.jpg"
+import Tocuapan1 from "../assets/Photos/Tourism/Tocuapan/1-Tocuapan.jpg"
+import Tocuapan2 from "../assets/Photos/Tourism/Tocuapan/2-Tocuapan.jpg"
+import Juntas1 from "../assets/Photos/Tourism/Lasjuntas/1-Lasjuntas.jpg"
+import Juntas2 from "../assets/Photos/Tourism/Lasjuntas/2-Lasjuntas.jpg"
+import Revolucion1 from "../assets/Photos/Tourism/Revolución/1-Parque.jpg"
+import Revolucion2 from "../assets/Photos/Tourism/Revolución/2-Parque.jpg"
+import Iglesia1 from "../assets/Photos/Tourism/LaAsuncióndeMaría/1-Iglesia.jpg"
+import Iglesia2 from "../assets/Photos/Tourism/LaAsuncióndeMaría/2-Iglesia.jpg"
+import Museo1 from "../assets/Photos/Tourism/Museocomunitario/1-Museo.jpg"
+import Museo2 from "../assets/Photos/Tourism/Museocomunitario/2-Museo.jpg"
 
 function TourismPage() {
   const { isMobile } = useExtaData();
@@ -31,7 +38,7 @@ function TourismPage() {
         >
           <TourismComponent
             data={{
-              images: ImagesMatlacobatl,
+              images: [Matlacobatl1, Matlacobatl2],
               imageAlt: "Matlacobatl",
               imageSide: "left",
               title: "Barranca “Matlacobatl”",
@@ -52,7 +59,7 @@ function TourismPage() {
         >
           <TourismComponent
             data={{
-              images: ImagesTexolo,
+              images: [Texolo1, Texolo2],
               imageAlt: "Texolo",
               imageSide: "right",
               title: "Cascada “Texolo”",
@@ -72,7 +79,7 @@ function TourismPage() {
         >
           <TourismComponent
             data={{
-              images: ImagesMonja,
+              images: [Monja1, Monja2],
               imageAlt: "La Monja",
               imageSide: "left",
               title: "Cascada “La Monja”",
@@ -93,7 +100,7 @@ function TourismPage() {
         >
           <TourismComponent
             data={{
-              images: ImagesTezozontla,
+              images: [Tezozontla1, Tezozontla2],
               imageAlt: "Tezozontla",
               imageSide: "right",
               title: "Cascada “Tezozontla”",
@@ -113,7 +120,7 @@ function TourismPage() {
         >
           <TourismComponent
             data={{
-              images: ImagesTocuapan,
+              images: [Tocuapan1, Tocuapan2],
               imageAlt: "Tocuapan",
               imageSide: "left",
               title: "Cascada “Tocuapan”",
@@ -133,7 +140,7 @@ function TourismPage() {
         >
           <TourismComponent
             data={{
-              images: ImagesJuntas,
+              images: [Juntas1, Juntas2],
               imageAlt: "Las juntas",
               imageSide: "right",
               title: "Río “Las juntas”",
@@ -153,7 +160,7 @@ function TourismPage() {
         >
           <TourismComponent
             data={{
-              images: ImagesRevolucion,
+              images: [Revolucion1, Revolucion2],
               imageAlt: "Revolución",
               imageSide: "left",
               title: "Parque “Revolución”",
@@ -174,7 +181,7 @@ function TourismPage() {
         >
           <TourismComponent
             data={{
-              images: ImagesIglesia,
+              images: [Iglesia1, Iglesia2],
               imageAlt: "La Asunción de María",
               imageSide: "right",
               title: "Parroquia de “La Asunción de María”",
@@ -194,7 +201,7 @@ function TourismPage() {
         >
           <TourismComponent
             data={{
-              images: ImagesMuseo,
+              images: [Museo1, Museo2],
               imageAlt: "Museo comunitario",
               imageSide: "left",
               title: "Museo comunitario de la Antigua Estación Ferroviaria.",
