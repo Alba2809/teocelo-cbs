@@ -4,7 +4,6 @@ import { useExtaData } from "../../../context/ExtraDataContext";
 import Footer1 from "../../../assets/Extras/Footer1.png";
 import Footer2 from "../../../assets/Extras/Footer2.png";
 
-
 function TourismComponent({ data }) {
   const { isMobile } = useExtaData();
 
@@ -93,10 +92,12 @@ function TourismComponent({ data }) {
         >
           Ubicación: {data.location}
         </h3>
-        <br />
-        <p className="font-normal text-lg text-justify">{data.p1}</p>
-        <br />
-        <p className="font-normal text-lg text-justify">{data.p2}</p>
+        {data.texts.map((text, i) => (
+          <section key={i}>
+            <br />
+            <p className="font-normal text-lg text-justify">{text}</p>
+          </section>
+        ))}
       </div>
       <img
         src={Footer1}
