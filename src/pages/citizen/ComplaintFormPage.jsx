@@ -333,7 +333,7 @@ function ComplaintFormPage() {
             )}
           </div>
           <div className="w-full lg:w-[20%]">
-            <label className="font-bold text-xl">Colina:</label>
+            <label className="font-bold text-xl">Colonia:</label>
             <div className="bg-[#F1F1F1] border-2 border-black rounded-md">
               <input
                 type="text"

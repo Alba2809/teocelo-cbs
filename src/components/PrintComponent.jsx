@@ -79,7 +79,7 @@ const PrintComponent = forwardRef(({ data }, ref) => {
             />
           </div>
         </div>
-        <div className="w-[45%] lg:w-[30%]">
+        <div className="w-full lg:w-[30%]">
           <label className="font-bold text-xl">Correo electrónico:</label>
           <div className="bg-[#F1F1F1] border-2 border-black rounded-md">
             <input
@@ -89,20 +89,8 @@ const PrintComponent = forwardRef(({ data }, ref) => {
             />
           </div>
         </div>
-        <div className="w-[45%] lg:w-[30%]">
-          <label className="font-bold text-xl">
-            Confirmar correo electrónico:
-          </label>
-          <div className="bg-[#F1F1F1] border-2 border-black rounded-md">
-            <input
-              type="email"
-              className="w-full text-black font-medium text-base lg:text-xl px-4 py-2 rounded-md border-black"
-              defaultValue={data.email}
-            />
-          </div>
-        </div>
         <div className="w-full lg:w-[20%]">
-          <label className="font-bold text-xl">Colina:</label>
+          <label className="font-bold text-xl">Colonia:</label>
           <div className="bg-[#F1F1F1] border-2 border-black rounded-md">
             <input
               type="text"
