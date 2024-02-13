@@ -13,7 +13,7 @@ function ServicesOptions() {
     <div>
       <div>
         <h1 className="font-extrabold text-center text-2xl lg:text-4xl pt-5 pb-28">
-          SITIOS DE INTERES
+          SITIOS DE INTERÉS
         </h1>
       </div>
       <div className="flex flex-wrap items-center justify-center gap-5 gap-y-16 text-center w-full">

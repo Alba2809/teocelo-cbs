@@ -79,7 +79,7 @@ function RegisterPage() {
                   {...register("firstname", {
                     required: "Se requiere el nombre",
                     pattern: {
-                      value: /^[a-zA-Z\s]+$/,
+                      value: /^[a-zA-ZÁÉÍÓÚÜÑáéíóúüñ\s]+$/,
                       message: "Solo se permiten letras",
                     },
                     maxLength: {
@@ -101,7 +101,7 @@ function RegisterPage() {
                   {...register("lastname", {
                     required: "Se requieren los apellidos",
                     pattern: {
-                      value: /^[a-zA-Z\s]+$/,
+                      value: /^[a-zA-ZÁÉÍÓÚÜÑáéíóúüñ\s]+$/,
                       message: "Solo se permiten letras",
                     },
                     maxLength: {
@@ -187,7 +187,7 @@ function RegisterPage() {
                     {...register("password", {
                       required: "Se requiere la contraseña",
                       pattern: {
-                        value: /^[a-zA-Z0-9_\-\s@\$!%*?&]+$/,
+                        value: /^[a-zA-Z0-9_\-\s@\$!%*?&ÁÉÍÓÚÜÑáéíóúüñ]+$/,
                         message:
                           "Solo se permiten letras, números, espacios y los caracteres (-, _, @, $, !, %, *, ? y &)",
                       },

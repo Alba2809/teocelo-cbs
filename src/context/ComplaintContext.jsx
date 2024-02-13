@@ -22,8 +22,11 @@ export function ComplaintProvider({ children }) {
       const res = await createComplaintRequest(data);
       return res.data;
     } catch (error) {
-      setErrors(error.response.data);
-      console.log(error.response.data)
+      if(typeof error.response.data === "object" && error.response.data){
+        const array = Object.values(error.response.data)
+        setErrors(array);
+      }
+      else setErrors(error.response.data);
     }
   };
 
@@ -32,7 +35,11 @@ export function ComplaintProvider({ children }) {
       const res = await getComplaintsRequest();
       setComplaints(res.data);
     } catch (error) {
-      console.log(error);
+      if(typeof error.response.data === "object" && error.response.data){
+        const array = Object.values(error.response.data)
+        setErrors(array);
+      }
+      else setErrors(error.response.data);
     }
   };
 

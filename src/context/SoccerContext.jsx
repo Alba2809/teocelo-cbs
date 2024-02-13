@@ -59,7 +59,7 @@ export function SoccerProvider({ children }) {
     if (errors.length > 0) {
       const timer = setTimeout(() => {
         setErrors([]);
-      }, 5000);
+      }, 8000);
       return () => clearTimeout(timer);
     }
   }, [errors]);

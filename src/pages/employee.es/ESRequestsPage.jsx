@@ -185,10 +185,10 @@ function ESRequestsPage({ type }) {
               className="bg-[#6d1610] text-white rounded-full font-montserrat text-xl lg:text-3xl py-1 px-5 w-full"
               href={
                 type === "cattle"
-                  ? "https://docs.google.com/forms/d/e/1FAIpQLSdjVNHPgA8Uf31uPisO0MrS_HmTp1cIJe6zqE1J1caJAPQo_w/viewform?usp=sf_link"
+                  ? "https://docs.google.com/forms/d/12mrCklysnYnc5GoWOs7blzAbCvJyp-cwGuEhKpo_Zdk/edit#responses"
                   : type === "agricultural"
-                  ? "https://docs.google.com/forms/d/e/1FAIpQLSf8DY3mUpWJvcXJd5hKP0AhjcOg8J95HAfG_8lgkvv69pdU7w/viewform?usp=sf_link"
-                  : "https://docs.google.com/forms/d/e/1FAIpQLSdM_2ZQKklbrKX6njwq-Wn7R5TwhxLBViz-PgGW8i4E73Q-Fg/viewform?usp=sf_link"
+                  ? "https://docs.google.com/forms/d/1hR7QWxsJFllVaLNYz-KFNCqf4JGTBzdAx96WrBEg0P4/edit#responses"
+                  : "https://docs.google.com/forms/d/1ZFPcgyIk8Fn12JIAmS1In9G3qnoZcI89eWF7eNu8YFU/edit#responses"
               }
             >
               Solicitudes
@@ -300,7 +300,7 @@ function ESRequestsPage({ type }) {
                           {request.user.firstname + " " + request.user.lastname}
                         </th>
                         <th className="border-[2px] rounded-md border-black p-2">
-                          {request.phonenumber ?? "2281824453"}
+                          {request.user.phonenumber}
                         </th>
                         <th>
                           <input

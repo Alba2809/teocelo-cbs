@@ -110,7 +110,7 @@ function LampFormsPage({ type }) {
             <input
               type="text"
               placeholder="Teléfono"
-              value={user.phonenumber ?? "2255114422"}
+              value={user.phonenumber}
               className="w-full text-black font-montserrat font-medium text-base lg:text-xl px-4 py-2 rounded-md border-2 border-black"
               disabled
             />

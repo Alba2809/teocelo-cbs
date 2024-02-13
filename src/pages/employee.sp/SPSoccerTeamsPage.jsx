@@ -27,6 +27,9 @@ function SPSoccerTeamsPage() {
   const [open, setOpen] = useState(false);
   const [openEnd, setOpenEnd] = useState(false);
   const [titleDialog, setTitleDialog] = useState("");
+  /* const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }; */
 
   const handleOpen = () => setOpen((prev) => !prev);
   const handleOpenEnd = () => setOpenEnd((prev) => !prev);
@@ -110,9 +113,12 @@ function SPSoccerTeamsPage() {
     setOpenEnd(false);
   };
 
+  const [loadingError, setLoadingError] = useState(false);
+  const [totalTeamsDeleted, setTotalTeamsDeleted] = useState(0);
+  const [totalTeamsCreated, setTotalTeamsCreated] = useState(0);
+
   useEffect(() => {
     if (loadingUpdate) {
-      const teamNamesSet = new Set();
       const isValidTeams = teams.every((team) => {
         return (
           team.teamname.trim() !== "" &&
@@ -125,13 +131,9 @@ function SPSoccerTeamsPage() {
           team.goalsfavor >= 0 &&
           team.goalsagainst >= 0 &&
           team.goaldifference >= 0 &&
-          team.points >= 0 /* &&
-          !teamNamesSet.has(team.teamname) &&
-          teamNamesSet.add(team.teamname) */
+          team.points >= 0
         );
       });
-
-      const countErrors = 0;
 
       if (!isValidTeams) {
         setLoadingUpdate(false);
@@ -144,32 +146,53 @@ function SPSoccerTeamsPage() {
 
       async function deleteTeam(data) {
         const res = await deleteSoccerTeam(data._id);
+        if (res?.statusText === "OK") setTotalTeamsDeleted(prev => prev + 1);
       }
-      teamsToDelete.map((team) => {
+      /* teamsToDelete.map((team) => {
         deleteTeam(team);
-      });
+      }); */
 
       async function createOrUpdate(data) {
         const res = await createSoccerTeam(data);
+        if (res?.statusText === "OK") setTotalTeamsCreated(prev => prev + 1);
       }
-      teams.map((team) => {
+      /* teams.map((team) => {
         createOrUpdate(team);
-      });
+      }); */
 
-      if (soccerErrors) {
-        setLoadingUpdate(false);
+      async function requests() {
+        try {
+          await Promise.all(teamsToDelete.map((team) => deleteTeam(team)));
+          await Promise.all(teams.map((team) => createOrUpdate(team)));
+          setLoadingUpdate(false)
+          setLoadingError(true);
+        } catch (error) {
+          setLoadingUpdate(false)
+          setLoadingError(true);
+        }
+      }
+
+     requests()
+    }
+  }, [loadingUpdate]);
+
+  useEffect(() => {
+    if(loadingError) {
+      if (totalTeamsDeleted < teamsToDelete.length || totalTeamsCreated < teams.length) {
         setTitleDialog(
           "¡Hubo problemas en la edición de los equipos! Rebice que todos lo campos estén correctos y que no haya equipos repetidos."
         );
         handleOpenEnd();
       } else {
-        setLoadingUpdate(false);
-        setLoading(true);
-        setTitleDialog("¡Información editada exitosamente!");
+        setTitleDialog("¡Equipos editados exitosamente!");
         handleOpenEnd();
+        setLoading(true);
       }
+      setTotalTeamsDeleted(0)
+      setTotalTeamsCreated(0)
+      setLoadingError(false);
     }
-  }, [loadingUpdate]);
+  }, [loadingError]);
 
   useEffect(() => {
     if (loading) {

@@ -184,9 +184,10 @@ function NavBar() {
                       initial={{ x: 100, opacity: 0 }}
                       animate={{ x: 0, opacity: 1 }}
                       exit={{ x: 100, opacity: 0 }}
-                      className="ml-5 font-extrabold text-black text-xl text-center"
+                      className="ml-5 font-extrabold text-black text-lg text-center"
                     >
-                      {user.firstname}
+                      {user.firstname} <br />
+                      {user.lastname}
                     </motion.p>
                   )}
                 </AnimatePresence>

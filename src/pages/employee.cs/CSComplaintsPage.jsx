@@ -185,7 +185,7 @@ function CSComplaintsPage() {
                           {`${data.firstname} ${data.lastnameP} ${data.lastnameM}`}
                         </th>
                         <th className="border-[2px] rounded-md border-black p-2">
-                          {data.phonenumber ?? "0000000000"}
+                          {data.phonenumber}
                         </th>
                         <th className="border-[2px] rounded-md border-black p-2 flex justify-center">
                           <motion.div

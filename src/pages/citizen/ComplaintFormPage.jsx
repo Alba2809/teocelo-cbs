@@ -345,19 +345,19 @@ function ComplaintFormPage() {
                 {...register("colony", {
                   required: "Se requiere la colonia",
                   pattern: {
-                    value: expJustLetters,
+                    value: expLettersNumbers,
                     message: "Solo se permiten letras",
                   },
                   maxLength: {
-                    value: 20,
-                    message: "No debe exceder los 20 caracteres",
+                    value: 30,
+                    message: "No debe exceder los 30 caracteres",
                   },
                   minLength: {
                     value: 6,
                     message: "Debe tener al menos 6 caracteres",
                   },
                 })}
-                maxLength={20}
+                maxLength={30}
                 minLength={6}
               />
               <p className="text-center py-2 mx-4 text-[#6D1610] font-bold text-lg">
@@ -417,12 +417,12 @@ function ComplaintFormPage() {
                 {...register("street", {
                   required: "Se requiere la calle",
                   pattern: {
-                    value: expJustLetters,
+                    value: expLettersNumbers,
                     message: "Solo se permiten letras",
                   },
                   maxLength: {
-                    value: 25,
-                    message: "No debe exceder los 25 caracteres",
+                    value: 60,
+                    message: "No debe exceder los 60 caracteres",
                   },
                   minLength: {
                     value: 6,
@@ -430,7 +430,7 @@ function ComplaintFormPage() {
                   },
                 })}
                 minLength={6}
-                maxLength={25}
+                maxLength={60}
               />
               <p className="text-center py-2 mx-4 text-[#6D1610] font-bold text-lg">
                 Escriba el nombre de su calle

@@ -212,7 +212,7 @@ function DWReportsPage() {
                         {report.user.firstname + " " + report.user.lastname}
                       </th>
                       <th className="border-[2px] rounded-md border-black p-2">
-                        {report.phonenumber}
+                        {report.user.phonenumber}
                       </th>
                       <th>
                         <input

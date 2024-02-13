@@ -4,7 +4,7 @@ import "../styles/InputNumber.css";
 
 const PrintComponent = forwardRef(({ data }, ref) => {
   const formatDate = (dateString) => {
-    const options = { day: "2-digit", month: "2-digit", year: "numeric" };
+    const options = { day: "2-digit", month: "2-digit", year: "numeric", timeZone: "UTC" };
     const formattedDate = new Date(dateString).toLocaleDateString(
       "es-ES",
       options
@@ -31,7 +31,7 @@ const PrintComponent = forwardRef(({ data }, ref) => {
         <div className="bg-[#F1F1F1] border-2 border-black rounded-md">
           <input
             type="text"
-            defaultValue={formatDate(data.createdAt)}
+            defaultValue={formatDate(data.date)}
             className="w-full text-black font-medium text-base lg:text-xl px-4 py-2 rounded-md border-black"
           />
         </div>
@@ -135,7 +135,7 @@ const PrintComponent = forwardRef(({ data }, ref) => {
           <label className="font-bold text-xl">Núm. Ext:</label>
           <div className="bg-[#F1F1F1] border-2 border-black rounded-md">
             <input
-              type="number"
+              type="text"
               className="w-full text-black font-medium text-base lg:text-xl px-4 py-2 rounded-md border-black"
               defaultValue={data.outnumber}
             />
@@ -145,7 +145,7 @@ const PrintComponent = forwardRef(({ data }, ref) => {
           <label className="font-bold text-xl">Núm. Int:</label>
           <div className="bg-[#F1F1F1] border-2 border-black rounded-md">
             <input
-              type="number"
+              type="text"
               className="w-full text-black font-medium text-base lg:text-xl px-4 py-2 rounded-md border-black"
               defaultValue={data.innumber}
             />

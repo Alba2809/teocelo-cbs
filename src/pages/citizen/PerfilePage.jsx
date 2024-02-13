@@ -1,28 +1,16 @@
 import { AnimatePresence, motion } from "framer-motion";
-import { FaRegEdit } from "react-icons/fa";
 import { useAuth } from "../../context/AuthContext";
 import { useEffect, useRef, useState } from "react";
-import { useForm } from "react-hook-form";
 import { useReactToPrint } from "react-to-print";
-import AlertMessage from "../../components/AlertMessage";
 import PrintComponent from "../../components/PrintComponent";
 import HeaderTittle from "../../components/HeaderTittle";
-import { useExtaData } from "../../context/ExtraDataContext";
 
 function PerfilePage() {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
   const {
     getUser,
     getHistory,
     getFile,
-    updateUser,
-    errors: updateErrors,
   } = useAuth();
-  const { expJustLetters, expJustNumbers } = useExtaData();
   const [loadingUser, setLoadingUser] = useState(true);
   const [loadingHistory, setLoadingHistory] = useState(true);
   const [userData, setUserData] = useState(null);
@@ -62,21 +50,8 @@ function PerfilePage() {
     } catch (error) {}
   };
 
-  const onSubmit = handleSubmit(async (data) => {
-    const hasChanges = Object.keys(data).some(
-      (key) => data[key] !== userData?.[key]
-    );
-
-    if (!hasChanges) return;
-
-    try {
-      const res = await updateUser(data);
-      if (res) setLoadingUser(true);
-    } catch (error) {}
-  });
-
   const formatDate = (dateString) => {
-    const options = { day: "2-digit", month: "2-digit", year: "numeric" };
+    const options = { day: "2-digit", month: "2-digit", year: "numeric", timeZone: "UTC" };
     const formattedDate = new Date(dateString).toLocaleDateString(
       "es-ES",
       options
@@ -135,21 +110,6 @@ function PerfilePage() {
   return (
     <div className="bg-white pt-6 pb-8 mt-5 font-montserrat">
       <HeaderTittle title={"Perfil"} />
-      <div className="m-10 overflow-hidden">
-        <AnimatePresence mode="sync">
-          {updateErrors.map((error, i) => (
-            <motion.div
-              key={i}
-              initial={{ height: 0, y: -10, opacity: 0 }}
-              animate={{ height: 48, y: 0, opacity: 1 }}
-              exit={{ height: 0, y: -10, opacity: 0 }}
-              transition={{ type: "spring", delay: i * 0.2 }}
-            >
-              <AlertMessage key={i} message={error} />
-            </motion.div>
-          ))}
-        </AnimatePresence>
-      </div>
       {loadingUser || !userData ? (
         <div className="px-8 mb-12 h-[490px] lg:h-[172px]">Loading...</div>
       ) : (
@@ -159,133 +119,49 @@ function PerfilePage() {
             <div className="relative">
               <input
                 type="text"
-                className={`border ${
-                  errors.firstname ? "border-red-500" : "border-black"
-                } py-2 pl-4 pr-12 w-full rounded-md`}
+                className={`border border-black py-2 pl-4 pr-12 w-full rounded-md`}
                 defaultValue={userData.firstname}
-                {...register("firstname", {
-                  required: "Se requiere el nombre",
-                  pattern: {
-                    value: expJustLetters,
-                    message: "Solo se permiten letras",
-                  },
-                  maxLength: {
-                    value: 25,
-                    message: "No debe exceder los 25 caracteres",
-                  },
-                })}
                 maxLength={25}
-              />
-              <FaRegEdit
-                className="absolute right-2 bottom-2 cursor-pointer"
-                size="1.6em"
-                onClick={onSubmit}
+                disabled
               />
             </div>
-            {errors.firstname && (
-              <p className="text-red-500 absolute">
-                {errors.firstname.message}
-              </p>
-            )}
           </div>
           <div className="w-full lg:w-[30%] relative">
             <label className="font-bold text-xl">Apellidos</label>
             <div className="relative">
               <input
                 type="text"
-                className={`border ${
-                  errors.lastname ? "border-red-500" : "border-black"
-                } py-2 pl-4 pr-12 w-full rounded-md`}
+                className={`border border-black py-2 pl-4 pr-12 w-full rounded-md`}
                 defaultValue={userData.lastname}
-                {...register("lastname", {
-                  required: "Se requieren los apellidos",
-                  pattern: {
-                    value: expJustLetters,
-                    message: "Solo se permiten letras",
-                  },
-                  maxLength: {
-                    value: 25,
-                    message: "No debe exceder los 25 caracteres",
-                  },
-                })}
                 maxLength={25}
-              />
-              <FaRegEdit
-                className="absolute right-2 bottom-2 cursor-pointer"
-                size="1.6em"
-                onClick={onSubmit}
+                disabled
               />
             </div>
-            {errors.lastname && (
-              <p className="text-red-500 absolute">{errors.lastname.message}</p>
-            )}
           </div>
           <div className="w-full lg:w-[30%] relative">
-            <label className="font-bold text-xl">Telefono</label>
+            <label className="font-bold text-xl">Teléfono</label>
             <div className="relative">
               <input
                 type="text"
-                className={`border ${
-                  errors.phonenumber ? "border-red-500" : "border-black"
-                } py-2 pl-4 pr-12 w-full rounded-md`}
+                className={`border border-black py-2 pl-4 pr-12 w-full rounded-md`}
                 defaultValue={userData.phonenumber ?? ""}
-                {...register("phonenumber", {
-                  required: "Se requiere el número de teléfono",
-                  pattern: {
-                    value: expJustNumbers,
-                    message: "Solo se permiten letras",
-                  },
-                  maxLength: {
-                    value: 10,
-                    message: "Debe tener 10 dígitos",
-                  },
-                  minLength: {
-                    value: 10,
-                    message: "Debe tener 10 dígitos",
-                  },
-                })}
                 maxLength={10}
                 minLength={10}
-              />
-              <FaRegEdit
-                className="absolute right-2 bottom-2 cursor-pointer"
-                size="1.6em"
-                onClick={onSubmit}
+                disabled
               />
             </div>
-            {errors.phonenumber && (
-              <p className="text-red-500 absolute">
-                {errors.phonenumber.message}
-              </p>
-            )}
           </div>
           <div className="w-full lg:w-[30%] relative">
             <label className="font-bold text-xl">Correo electrónico</label>
             <div className="relative">
               <input
                 type="email"
-                className={`border ${
-                  errors.email ? "border-red-500" : "border-black"
-                } py-2 pl-4 pr-12 w-full rounded-md`}
+                className={`border border-black py-2 pl-4 pr-12 w-full rounded-md`}
                 defaultValue={userData.email}
-                {...register("email", {
-                  required: "Se requiere el correo electrónico",
-                  maxLength: {
-                    value: 50,
-                    message: "No debe exceder los 50 caracteres",
-                  },
-                })}
                 maxLength={50}
-              />
-              <FaRegEdit
-                className="absolute right-2 bottom-2 cursor-pointer"
-                size="1.6em"
-                onClick={onSubmit}
+                disabled
               />
             </div>
-            {errors.email && (
-              <p className="text-red-500 absolute">{errors.email.message}</p>
-            )}
           </div>
           <div className="w-full lg:w-[30%]">
             <label className="font-bold text-xl">Contraseña</label>
@@ -298,7 +174,6 @@ function PerfilePage() {
           </div>
         </form>
       )}
-
       <div className="w-full px-8">
         <div className="flex items-center my-5">
           <hr className="flex-1 border-t border-black border" />
@@ -404,7 +279,7 @@ function PerfilePage() {
                                       onClick={() =>
                                         handleDownload(
                                           data.document,
-                                          `{userData.firstname} ${userData.lastname}`
+                                          `${userData.firstname} ${userData.lastname}`
                                         )
                                       }
                                     >

@@ -212,7 +212,7 @@ function SLReportsPage() {
                         {report.user.firstname + " " + report.user.lastname}
                       </th>
                       <th className="border-[2px] rounded-md border-black p-2">
-                        {report.phonenumber ?? "0000000000"}
+                        {report.user.phonenumber}
                       </th>
                       <th>
                         <input

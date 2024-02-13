@@ -177,7 +177,7 @@ function DWRequestsPage() {
           >
             <a
               className="bg-[#6d1610] text-white rounded-full font-montserrat text-xl lg:text-3xl py-1 px-5 w-full"
-              href="https://docs.google.com/forms/d/e/1FAIpQLSeLajclYjYPQIWaHPi2pOcTq6xLbFc0wbv0M5PPCrWwJyQgdw/viewform?usp=sf_link"
+              href="https://docs.google.com/forms/d/1P57xaKKGLMoSdYMPRv6dsmOjQT0DPRrqFThB5oz_6Pc/edit#responses"
             >
               Solicitudes
             </a>
@@ -310,7 +310,7 @@ function DWRequestsPage() {
                           {request.user.firstname + " " + request.user.lastname}
                         </th>
                         <th className="border-[2px] rounded-md border-black p-2">
-                          {request.phonenumber}
+                          {request.user.phonenumber}
                         </th>
                         <th>
                           <input

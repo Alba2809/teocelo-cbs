@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useExtaData } from "../context/ExtraDataContext";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
-import Collage from "../assets/Photos/Collage.png";
+import CollageNuevo from "../assets/Photos/Collage-Nuevo.png";
 import LoginComponent from "../components/auth/LoginComponent";
 import RegisterComponent from "../components/auth/RegisterComponent";
 import LoginRegisterMV from "../components/auth/LoginRegisterMV";
@@ -45,7 +45,7 @@ function LoginRegisterPage() {
       ) : (
         <>
           <img
-            src={Collage}
+            src={CollageNuevo}
             alt="Imagen login"
             className={`h-screen w-1/2 absolute z-[9999] transition-transform duration-500 ${
               isLogin ? "translate-x-full" : "translate-x-0"
