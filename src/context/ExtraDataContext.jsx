@@ -15,7 +15,7 @@ export function ExtraDataContextProvider(props) {
   const [isLogin, setIsLogin] = useState(true);
   const imageUrl = `${VITE_BACKEND_URL}/public/images/`;
   const documentUrl = `${VITE_BACKEND_URL}/public/documentos/`;
-  const expLettersNumbers = /^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ\s]+$/;
+  const expLettersNumbers = /^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ\s-.]+$/;
   const expTextGeneral = /^[a-zA-Z0-9\s.,áéíóúÁÉÍÓÚñÑ]+$/;
   const expJustLetters = /^[a-zA-Z\sáéíóúÁÉÍÓÚñÑ]+$/;
   const expNumLettExtended = /^[a-zA-Z0-9\s.,¿?-_!¡"$áéíóúÁÉÍÓÚñÑ]+$/;

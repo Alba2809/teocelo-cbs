@@ -133,8 +133,8 @@ function WaterFormsPage({ type }) {
               {...register("street", {
                 required: "Se requiere la calle",
                 pattern: {
-                  value: expJustLetters,
-                  message: "Solo se permiten letras",
+                  value: expLettersNumbers,
+                  message: "Solo se permiten letras y números",
                 },
                 maxLength: {
                   value: 25,
@@ -196,19 +196,19 @@ function WaterFormsPage({ type }) {
               {...register("colony", {
                 required: "Se requiere la colonia",
                 pattern: {
-                  value: expJustLetters,
-                  message: "Solo se permiten letras",
+                  value: expLettersNumbers,
+                  message: "Solo se permiten letras y números",
                 },
                 maxLength: {
-                  value: 20,
-                  message: "No debe exceder los 20 caracteres",
+                  value: 150,
+                  message: "No debe exceder los 150 caracteres",
                 },
                 minLength: {
                   value: 6,
                   message: "Debe tener al menos 6 caracteres",
                 },
               })}
-              maxLength={20}
+              maxLength={150}
               minLength={6}
               className="w-full text-black font-montserrat font-medium text-base lg:text-xl px-4 py-2 rounded-md border-2 border-black"
             />
@@ -228,19 +228,19 @@ function WaterFormsPage({ type }) {
               {...register("town", {
                 required: "Se requiere la localidad",
                 pattern: {
-                  value: expJustLetters,
-                  message: "Solo se permiten letras",
+                  value: expLettersNumbers,
+                  message: "Solo se permiten letras y números",
                 },
                 maxLength: {
-                  value: 15,
-                  message: "No debe exceder los 15 caracteres",
+                  value: 150,
+                  message: "No debe exceder los 150 caracteres",
                 },
                 minLength: {
                   value: 6,
                   message: "Debe tener al menos 6 caracteres",
                 },
               })}
-              maxLength={15}
+              maxLength={150}
               minLength={6}
               className="w-full text-black font-montserrat font-medium text-base lg:text-xl px-4 py-2 rounded-md border-2 border-black"
             />

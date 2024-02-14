@@ -4,7 +4,6 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useExtaData } from "../../context/ExtraDataContext";
 import { useLamps } from "../../context/LampContext";
 import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
 import InputSelect from "../../components/InputSelect";
 import HeaderTittle from "../../components/HeaderTittle";
 import AlertMessage from "../../components/AlertMessage";
@@ -135,19 +134,19 @@ function LampFormsPage({ type }) {
               {...register("street", {
                 required: "Se requiere la calle",
                 pattern: {
-                  value: expJustLetters,
-                  message: "Solo se permiten letras",
+                  value: expLettersNumbers,
+                  message: "Solo se permiten letras y números",
                 },
                 maxLength: {
-                  value: 25,
-                  message: "No debe exceder los 25 caracteres",
+                  value: 150,
+                  message: "No debe exceder los 150 caracteres",
                 },
                 minLength: {
                   value: 6,
                   message: "Debe tener al menos 6 caracteres",
                 },
               })}
-              maxLength={25}
+              maxLength={150}
               minLength={6}
               className={`w-full text-black font-montserrat font-medium text-base lg:text-xl px-4 py-2 rounded-md border-2 ${
                 errors.street
@@ -202,19 +201,15 @@ function LampFormsPage({ type }) {
               {...register("colony", {
                 required: "Se requiere la colonia",
                 pattern: {
-                  value: expJustLetters,
-                  message: "Solo se permiten letras",
+                  value: expLettersNumbers,
+                  message: "Solo se permiten letras números",
                 },
                 maxLength: {
-                  value: 20,
-                  message: "No debe exceder los 20 caracteres",
-                },
-                minLength: {
-                  value: 6,
-                  message: "Debe tener al menos 6 caracteres",
+                  value: 150,
+                  message: "No debe exceder los 150 caracteres",
                 },
               })}
-              maxLength={20}
+              maxLength={150}
               minLength={6}
               className={`w-full text-black font-montserrat font-medium text-base lg:text-xl px-4 py-2 rounded-md border-2 ${
                 errors.colony
@@ -238,19 +233,19 @@ function LampFormsPage({ type }) {
               {...register("town", {
                 required: "Se requiere la localidad",
                 pattern: {
-                  value: expJustLetters,
+                  value: expLettersNumbers,
                   message: "Solo se permiten letras",
                 },
                 maxLength: {
-                  value: 15,
-                  message: "No debe exceder los 15 caracteres",
+                  value: 150,
+                  message: "No debe exceder los 150 caracteres",
                 },
                 minLength: {
                   value: 6,
                   message: "Debe tener al menos 6 caracteres",
                 },
               })}
-              maxLength={15}
+              maxLength={150}
               minLength={6}
               className={`w-full text-black font-montserrat font-medium text-base lg:text-xl px-4 py-2 rounded-md border-2 ${
                 errors.town
