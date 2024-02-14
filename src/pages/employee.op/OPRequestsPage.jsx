@@ -253,7 +253,7 @@ function OPRequestsPage() {
                   <div className="absolute border-t-[4px] w-12 border-[#f9b03c] -rotate-45 -right-[0.60rem] bottom-[0.65rem]"></div>
                 </th>
                 <th className="relative overflow-hidden">
-                  <p className="p-3 break-words">Oficio del ciudadano</p>
+                  <p className="p-3 break-words">Comentarios adicionales</p>
                   <div className="border-[4px] border-[#6D1610] absolute inset-y-0 inset-x-0"></div>
                   <div className="absolute border-t-[5px] w-5 border-[#f9b03c] rotate-45 -right-2 top-0"></div>
                   <div className="absolute border-t-[5px] w-8 border-[#f9b03c] rotate-45 -right-[0.45rem] top-1"></div>
@@ -264,7 +264,7 @@ function OPRequestsPage() {
                   <div className="absolute border-t-[5px] w-12 border-[#f9b03c] rotate-45 -left-[0.60rem] bottom-[0.65rem]"></div>
                 </th>
                 <th className="relative overflow-hidden">
-                  <p className="p-3 break-words">Estatus</p>
+                  <p className="p-3 break-words">Oficio del ciudadano</p>
                   <div className="border-[4px] border-[#6D1610] absolute inset-y-0 inset-x-0"></div>
                   <div className="absolute border-t-[4px] w-5 border-[#f9b03c] -rotate-45 -left-2 top-0"></div>
                   <div className="absolute border-t-[4px] w-8 border-[#f9b03c] -rotate-45 -left-[0.45rem] top-1"></div>
@@ -275,7 +275,7 @@ function OPRequestsPage() {
                   <div className="absolute border-t-[4px] w-12 border-[#f9b03c] -rotate-45 -right-[0.60rem] bottom-[0.65rem]"></div>
                 </th>
                 <th className="relative overflow-hidden">
-                  <p className="p-3 break-words">Oficio con sello</p>
+                  <p className="p-3 break-words">Estatus</p>
                   <div className="border-[4px] border-[#6D1610] absolute inset-y-0 inset-x-0"></div>
                   <div className="absolute border-t-[5px] w-5 border-[#f9b03c] rotate-45 -right-2 top-0"></div>
                   <div className="absolute border-t-[5px] w-8 border-[#f9b03c] rotate-45 -right-[0.45rem] top-1"></div>
@@ -284,6 +284,17 @@ function OPRequestsPage() {
                   <div className="absolute border-t-[5px] w-5 border-[#f9b03c] rotate-45 -left-2 bottom-0"></div>
                   <div className="absolute border-t-[5px] w-8 border-[#f9b03c] rotate-45 -left-[0.45rem] bottom-1"></div>
                   <div className="absolute border-t-[5px] w-12 border-[#f9b03c] rotate-45 -left-[0.60rem] bottom-[0.65rem]"></div>
+                </th>
+                <th className="relative overflow-hidden">
+                  <p className="p-3 break-words">Oficio con sello</p>
+                  <div className="border-[4px] border-[#6D1610] absolute inset-y-0 inset-x-0"></div>
+                  <div className="absolute border-t-[4px] w-5 border-[#f9b03c] -rotate-45 -left-2 top-0"></div>
+                  <div className="absolute border-t-[4px] w-8 border-[#f9b03c] -rotate-45 -left-[0.45rem] top-1"></div>
+                  <div className="absolute border-t-[4px] w-12 border-[#f9b03c] -rotate-45 -left-[0.60rem] top-[0.65rem]"></div>
+
+                  <div className="absolute border-t-[4px] w-5 border-[#f9b03c] -rotate-45 -right-2 bottom-0"></div>
+                  <div className="absolute border-t-[4px] w-8 border-[#f9b03c] -rotate-45 -right-[0.45rem] bottom-1"></div>
+                  <div className="absolute border-t-[4px] w-12 border-[#f9b03c] -rotate-45 -right-[0.60rem] bottom-[0.65rem]"></div>
                 </th>
               </tr>
             </thead>
@@ -318,6 +329,14 @@ function OPRequestsPage() {
                       <th className="border-[2px] rounded-md border-black p-2">
                         {request.user.phonenumber}
                       </th>
+                      <th>
+                          <input
+                            type="text"
+                            defaultValue={request.commentsCitizen}
+                            className="border-[2px] rounded-md border-black p-2 w-full truncate h-[80px] lg:h-[104px]"
+                            readOnly
+                          />
+                        </th>
                       <th className="border-[2px] rounded-md border-black p-2">
                         <motion.div
                           className="w-full flex self-center"
