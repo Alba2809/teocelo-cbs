@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import HeaderTittle from "../components/HeaderTittle";
 import { useSoccer } from "../context/SoccerContext";
 import { AnimatePresence, motion } from "framer-motion";
+import HeaderTittle from "../components/HeaderTittle";
 
 function SoccerTeamsPage() {
   const { getSoccerTeams, teams } = useSoccer();

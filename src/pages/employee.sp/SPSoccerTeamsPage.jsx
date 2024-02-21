@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useSoccer } from "../../context/SoccerContext";
 import { AnimatePresence, motion } from "framer-motion";
 import { Spinner } from "@material-tailwind/react";
@@ -27,9 +27,6 @@ function SPSoccerTeamsPage() {
   const [open, setOpen] = useState(false);
   const [openEnd, setOpenEnd] = useState(false);
   const [titleDialog, setTitleDialog] = useState("");
-  /* const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  }; */
 
   const handleOpen = () => setOpen((prev) => !prev);
   const handleOpenEnd = () => setOpenEnd((prev) => !prev);
@@ -146,7 +143,7 @@ function SPSoccerTeamsPage() {
 
       async function deleteTeam(data) {
         const res = await deleteSoccerTeam(data._id);
-        if (res?.statusText === "OK") setTotalTeamsDeleted(prev => prev + 1);
+        if (res?.statusText === "OK") setTotalTeamsDeleted((prev) => prev + 1);
       }
       /* teamsToDelete.map((team) => {
         deleteTeam(team);
@@ -154,7 +151,7 @@ function SPSoccerTeamsPage() {
 
       async function createOrUpdate(data) {
         const res = await createSoccerTeam(data);
-        if (res?.statusText === "OK") setTotalTeamsCreated(prev => prev + 1);
+        if (res?.statusText === "OK") setTotalTeamsCreated((prev) => prev + 1);
       }
       /* teams.map((team) => {
         createOrUpdate(team);
@@ -164,32 +161,35 @@ function SPSoccerTeamsPage() {
         try {
           await Promise.all(teamsToDelete.map((team) => deleteTeam(team)));
           await Promise.all(teams.map((team) => createOrUpdate(team)));
-          setLoadingUpdate(false)
+          setLoadingUpdate(false);
           setLoadingError(true);
         } catch (error) {
-          setLoadingUpdate(false)
+          setLoadingUpdate(false);
           setLoadingError(true);
         }
       }
 
-     requests()
+      requests();
     }
   }, [loadingUpdate]);
 
   useEffect(() => {
-    if(loadingError) {
-      if (totalTeamsDeleted < teamsToDelete.length || totalTeamsCreated < teams.length) {
-        setTitleDialog(
-          "¡Hubo problemas en la edición de los equipos! Rebice que todos lo campos estén correctos y que no haya equipos repetidos."
-        );
-        handleOpenEnd();
+    if (loadingError) {
+      if (
+        totalTeamsDeleted < teamsToDelete.length ||
+        totalTeamsCreated < teams.length
+      ) {
+        /* setTitleDialog(
+          "¡Hubo problemas en la edición de los equipos! Revice que todos lo campos estén correctos y que no haya equipos repetidos."
+        ); */
+        /* handleOpenEnd(); */
       } else {
-        setTitleDialog("¡Equipos editados exitosamente!");
-        handleOpenEnd();
-        setLoading(true);
       }
-      setTotalTeamsDeleted(0)
-      setTotalTeamsCreated(0)
+      setTitleDialog("¡Edición de equipos realizada!");
+      handleOpenEnd();
+      setLoading(true);
+      setTotalTeamsDeleted(0);
+      setTotalTeamsCreated(0);
       setLoadingError(false);
     }
   }, [loadingError]);
@@ -206,8 +206,10 @@ function SPSoccerTeamsPage() {
     }
   }, [loading]);
 
+  const soccerRef = useRef(null);
+
   return (
-    <div className="bg-white pt-6 pb-8 mt-5">
+    <div className="bg-white pt-6 pb-8 mt-5" ref={soccerRef}>
       {loadingUpdate && (
         <div className="fixed w-full h-screen top-0 flex justify-center items-center z-[9999]">
           <motion.div
