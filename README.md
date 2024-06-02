@@ -24,8 +24,8 @@ Sigue estos pasos para configurar el proyecto en tu entorno local:
 1. **Clona el repositorio**:
 
    ```bash
-   git clone https://github.com/tu-usuario/sistema-web-teocelo-frontend.git
-   cd sistema-web-teocelo-frontend
+   git clone https://github.com/Alba2809/teocelo-cbs
+   cd teocelo-cbs
    ```
 
 2. **Instala las dependencias**:
